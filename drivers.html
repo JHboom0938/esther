@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="F1 Insider｜現役車手">
-  <title>車手名冊｜F1 Insider</title>
+  <meta name="description" content="F1 Insider｜22 位現役頂尖車手完整檔案">
+  <title>車手名冊 (22 位全席)｜F1 Insider</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -16,16 +16,16 @@
     .page-title { font: 900 clamp(42px, 6vw, 76px)/1 var(--font-display); }
     .page-title span { color: var(--red); }
     .page-subtitle { color: #999; font-size: 14px; margin-top: 14px; max-width: 650px; line-height: 1.8; }
-    .drivers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
-    .driver-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 24px; position: relative; overflow: hidden; border-top: 4px solid var(--team-color, var(--red)); }
+    .drivers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
+    .driver-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 22px; position: relative; overflow: hidden; border-top: 4px solid var(--team-color, var(--red)); }
     .driver-card:hover { transform: translateY(-4px); border-color: #666; transition: all 0.25s; }
-    .driver-ghost { position: absolute; right: 10px; top: -15px; font: 900 90px/1 var(--font-display); color: rgba(255,255,255,.05); pointer-events: none; }
-    .driver-name { font-size: 22px; font-weight: 700; }
+    .driver-ghost { position: absolute; right: 10px; top: -15px; font: 900 85px/1 var(--font-display); color: rgba(255,255,255,.05); pointer-events: none; }
+    .driver-name { font-size: 21px; font-weight: 700; }
     .driver-num { color: var(--red); font: 800 18px var(--font-display); }
-    .driver-meta { font-size: 12px; color: #aaa; margin: 8px 0 14px; }
+    .driver-meta { font-size: 12px; color: #aaa; margin: 6px 0 12px; }
     .driver-meta span { color: #fff; font-weight: 600; }
-    .driver-bio { font-size: 13px; color: #aaa; line-height: 1.8; margin-bottom: 16px; }
-    .driver-highlights { border-top: 1px solid #282828; padding-top: 12px; font-size: 12px; color: #ccc; }
+    .driver-bio { font-size: 13px; color: #aaa; line-height: 1.8; margin-bottom: 14px; }
+    .driver-highlights { border-top: 1px solid #282828; padding-top: 10px; font-size: 12px; color: #ccc; }
     .driver-highlights strong { color: var(--red-bright); }
   </style>
 </head>
@@ -33,14 +33,11 @@
   <div class="top-line"></div>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="../index.html">
-        <span class="brand-mark">F1</span>
-        <span class="brand-name">INSIDER<span class="brand-period">.</span></span>
-      </a>
+      <a class="brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a>
       <nav class="primary-nav">
         <a class="nav-link" href="../index.html">首頁 <span>HOME</span></a>
-        <a class="nav-link active" href="drivers.html">車手 <span>DRIVERS</span></a>
-        <a class="nav-link" href="teams.html">車隊 <span>TEAMS</span></a>
+        <a class="nav-link active" href="drivers.html">車手 <span>DRIVERS (22)</span></a>
+        <a class="nav-link" href="teams.html">車隊 <span>TEAMS (11)</span></a>
         <a class="nav-link" href="circuits.html">賽道 <span>CIRCUITS</span></a>
         <a class="nav-link" href="racing-guide.html">賽事指南 <span>GUIDE</span></a>
       </nav>
@@ -49,78 +46,38 @@
   </header>
   <main class="page-container">
     <div class="page-header">
-      <p class="page-kicker">F1 INSIDER / DRIVERS DIRECTORY</p>
-      <h1 class="page-title">現役頂尖車手 <span>DRIVERS</span></h1>
-      <p class="page-subtitle">認識站上 Formula 1 圍場頂端的 20 位主角，掌握車手國籍、歷史號碼、所屬車隊與生涯高光戰績。</p>
+      <p class="page-kicker">F1 INSIDER / COMPLETE 22-DRIVER ROSTER</p>
+      <h1 class="page-title">現役頂尖車手全席 <span>22 DRIVERS</span></h1>
+      <p class="page-subtitle">涵蓋 11 支車隊之 22 位世界頂級競速主角，收錄國籍、歷史代表背號、生涯亮點與駕馭風格解析。</p>
     </div>
     <div class="drivers-grid">
-      <div class="driver-card" style="--team-color: #3671c6;">
-        <span class="driver-ghost">1</span>
-        <div style="display:flex; justify-content:space-between; align-items:baseline;">
-          <h2 class="driver-name">Max Verstappen</h2>
-          <span class="driver-num">#1</span>
-        </div>
-        <div class="driver-meta">國籍：<span>荷蘭 (NED)</span> ｜ 車隊：<span>Red Bull Racing</span></div>
-        <p class="driver-bio">當代極具統治力的賽車手，以無與倫比的控車穩定度與絕佳輪胎管理能力聞名，多次刷新單季分站勝場歷史紀錄。</p>
-        <div class="driver-highlights"><strong>生涯亮點：</strong> 多屆世界一級方程式年度總冠軍、史上最年輕分站冠軍得主。</div>
-      </div>
-      <div class="driver-card" style="--team-color: #e80020;">
-        <span class="driver-ghost">44</span>
-        <div style="display:flex; justify-content:space-between; align-items:baseline;">
-          <h2 class="driver-name">Lewis Hamilton</h2>
-          <span class="driver-num">#44</span>
-        </div>
-        <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>Ferrari</span></div>
-        <p class="driver-bio">一級方程式歷史勝場與桿位紀錄保持人。2025 年震撼轉投躍馬法拉利，追求個人生涯傳奇的第八座世界冠軍頭銜。</p>
-        <div class="driver-highlights"><strong>生涯亮點：</strong> 7 屆世界冠軍、100+ 場大獎賽優勝、100+ 次排位賽桿位。</div>
-      </div>
-      <div class="driver-card" style="--team-color: #e80020;">
-        <span class="driver-ghost">16</span>
-        <div style="display:flex; justify-content:space-between; align-items:baseline;">
-          <h2 class="driver-name">Charles Leclerc</h2>
-          <span class="driver-num">#16</span>
-        </div>
-        <div class="driver-meta">國籍：<span>摩納哥 (MON)</span> ｜ 車隊：<span>Ferrari</span></div>
-        <p class="driver-bio">法拉利青訓出身的純粹競速天才，在單圈排位賽具備極致的爆發力與車輛極限駕馭能力，2024 年奪下夢寐以求的主場摩納哥冠軍。</p>
-        <div class="driver-highlights"><strong>生涯亮點：</strong> 摩納哥大獎賽冠軍、法拉利旗幟性當家王牌車手。</div>
-      </div>
-      <div class="driver-card" style="--team-color: #ff8000;">
-        <span class="driver-ghost">4</span>
-        <div style="display:flex; justify-content:space-between; align-items:baseline;">
-          <h2 class="driver-name">Lando Norris</h2>
-          <span class="driver-num">#4</span>
-        </div>
-        <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>McLaren</span></div>
-        <p class="driver-bio">麥拉倫車隊重返巔峰的核心人物。風格冷靜兼具攻擊性，在多變氣候與長距離正賽節奏中表現極為搶眼。</p>
-        <div class="driver-highlights"><strong>生涯亮點：</strong> 2024 邁阿密大獎賽首勝、年度車手總冠軍有力競爭者。</div>
-      </div>
-      <div class="driver-card" style="--team-color: #ff8000;">
-        <span class="driver-ghost">81</span>
-        <div style="display:flex; justify-content:space-between; align-items:baseline;">
-          <h2 class="driver-name">Oscar Piastri</h2>
-          <span class="driver-num">#81</span>
-        </div>
-        <div class="driver-meta">國籍：<span>澳洲 (AUS)</span> ｜ 車隊：<span>McLaren</span></div>
-        <p class="driver-bio">近年晉升 F1 最受矚目的新星，橫掃青年方程式冠軍後登陸 F1，以超乎年齡的心理素質與超車精準度震驚圍場。</p>
-        <div class="driver-highlights"><strong>生涯亮點：</strong> 2024 匈牙利大獎賽優勝、新人年奪得衝刺賽勝利。</div>
-      </div>
-      <div class="driver-card" style="--team-color: #27f4d2;">
-        <span class="driver-ghost">63</span>
-        <div style="display:flex; justify-content:space-between; align-items:baseline;">
-          <h2 class="driver-name">George Russell</h2>
-          <span class="driver-num">#63</span>
-        </div>
-        <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>Mercedes-AMG</span></div>
-        <p class="driver-bio">梅賽德斯車隊中流砥柱，技術細膩且具備極佳工程反饋素養，被譽為新世代最具領袖風範的英國車手代表。</p>
-        <div class="driver-highlights"><strong>生涯亮點：</strong> 2022 巴西大獎賽冠軍、梅賽德斯當家主力。</div>
-      </div>
+      <!-- 22 Drivers -->
+      <div class="driver-card" style="--team-color: #3671c6;"><span class="driver-ghost">1</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Max Verstappen</h2><span class="driver-num">#1</span></div><div class="driver-meta">荷蘭 (NED) ｜ Red Bull Racing</div><p class="driver-bio">當代極具統治力的世界冠軍，極限走線控制力與長距離保胎能力無懈可擊，曾創下單季 19 勝驚人紀錄。</p><div class="driver-highlights"><strong>代表成就：</strong> 4 屆世界年度車手總冠軍、史上最年輕分站冠軍。</div></div>
+      <div class="driver-card" style="--team-color: #3671c6;"><span class="driver-ghost">30</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Liam Lawson</h2><span class="driver-num">#30</span></div><div class="driver-meta">紐西蘭 (NZL) ｜ Red Bull Racing</div><p class="driver-bio">紅牛青訓體系激進型戰將，在有限代打機會中屢次斬獲積分，防守強悍且攻彎毫不妥協。</p><div class="driver-highlights"><strong>代表成就：</strong> 代打新加坡分站前九拿分、青年賽事多料冠軍。</div></div>
+      <div class="driver-card" style="--team-color: #ff8000;"><span class="driver-ghost">4</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Lando Norris</h2><span class="driver-num">#4</span></div><div class="driver-meta">英國 (GBR) ｜ McLaren</div><p class="driver-bio">麥拉倫重返榮耀的領軍車手，排位賽極速拔萃，在輪胎管理與多變天氣下節奏把控極為精準。</p><div class="driver-highlights"><strong>代表成就：</strong> 邁阿密、荷蘭與新加坡大獎賽勝利、年度總亞軍有力競爭者。</div></div>
+      <div class="driver-card" style="--team-color: #ff8000;"><span class="driver-ghost">81</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Oscar Piastri</h2><span class="driver-num">#81</span></div><div class="driver-meta">澳洲 (AUS) ｜ McLaren</div><p class="driver-bio">連續稱霸 F3、F2 新秀年冠軍的天才青年，具備超乎年齡的鋼鐵冷靜心理素質與超車判斷力。</p><div class="driver-highlights"><strong>代表成就：</strong> 匈牙利與亞塞拜然大獎賽冠軍、卡達衝刺賽勝利。</div></div>
+      <div class="driver-card" style="--team-color: #e80020;"><span class="driver-ghost">16</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Charles Leclerc</h2><span class="driver-num">#16</span></div><div class="driver-meta">摩納哥 (MON) ｜ Ferrari</div><p class="driver-bio">法拉利旗幟性車手，單圈排位極速被譽為當代天花板之一，2024 年圓夢主場稱霸摩納哥與蒙札神殿。</p><div class="driver-highlights"><strong>代表成就：</strong> 摩納哥大獎賽冠軍、義大利蒙札主場勝利。</div></div>
+      <div class="driver-card" style="--team-color: #e80020;"><span class="driver-ghost">44</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Lewis Hamilton</h2><span class="driver-num">#44</span></div><div class="driver-meta">英國 (GBR) ｜ Ferrari</div><p class="driver-bio">F1 史上最偉大的傳奇車手之一。2025 年轉投法拉利，挑戰為躍馬奪得世界冠軍與個人第 8 冠榮耀。</p><div class="driver-highlights"><strong>代表成就：</strong> 7 屆世界冠軍、104 次桿位、歷史最多勝場紀錄保持人。</div></div>
+      <div class="driver-card" style="--team-color: #27f4d2;"><span class="driver-ghost">63</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">George Russell</h2><span class="driver-num">#63</span></div><div class="driver-meta">英國 (GBR) ｜ Mercedes-AMG</div><p class="driver-bio">梅賽德斯當家核心主將，精密的工程回饋能力與在惡劣條件下抓住頒獎台機會的果斷風格備受推崇。</p><div class="driver-highlights"><strong>代表成就：</strong> 巴西大獎賽冠軍、奧地利分站勝利。</div></div>
+      <div class="driver-card" style="--team-color: #27f4d2;"><span class="driver-ghost">12</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Andrea Kimi Antonelli</h2><span class="driver-num">#12</span></div><div class="driver-meta">義大利 (ITA) ｜ Mercedes-AMG</div><p class="driver-bio">被梅賽德斯欽點為漢米爾頓接班人的超級超新星，跳級晉升 F1，擁有天生敏銳的抓地力極限嗅覺。</p><div class="driver-highlights"><strong>代表成就：</strong> 橫掃 FRECA 與青年方程式桂冠、梅賽德斯重點培育。</div></div>
+      <div class="driver-card" style="--team-color: #229971;"><span class="driver-ghost">14</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Fernando Alonso</h2><span class="driver-num">#14</span></div><div class="driver-meta">西班牙 (ESP) ｜ Aston Martin</div><p class="driver-bio">賽車界的常青傳奇，比賽閱讀能力與防守走線被奉為教科書級別，至今依舊在頒獎台前線激烈競爭。</p><div class="driver-highlights"><strong>代表成就：</strong> 雙料世界冠軍、利曼 24 小時耐力賽冠軍。</div></div>
+      <div class="driver-card" style="--team-color: #229971;"><span class="driver-ghost">18</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Lance Stroll</h2><span class="driver-num">#18</span></div><div class="driver-meta">加拿大 (CAN) ｜ Aston Martin</div><p class="driver-bio">在濕滑雨地常有令人驚豔的單圈表現，出發起跑時具有極強的攻位意識與長距離續航力。</p><div class="driver-highlights"><strong>代表成就：</strong> 土耳其站雨地桿位、亞塞拜然站新秀頒獎台。</div></div>
+      <div class="driver-card" style="--team-color: #0090ff;"><span class="driver-ghost">23</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Alexander Albon</h2><span class="driver-num">#23</span></div><div class="driver-meta">泰國 (THA) ｜ Williams Racing</div><p class="driver-bio">威廉斯復興的定海神針，在防守端以冷靜頑強著稱，時常單停長跑戰術帶領中游賽車奇蹟拿分。</p><div class="driver-highlights"><strong>代表成就：</strong> 帶領威廉斯重返車隊積分競爭前線。</div></div>
+      <div class="driver-card" style="--team-color: #0090ff;"><span class="driver-ghost">55</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Carlos Sainz</h2><span class="driver-num">#55</span></div><div class="driver-meta">西班牙 (ESP) ｜ Williams Racing</div><p class="driver-bio">圍場最聰穎的戰術大師之一，在座艙中具備兼任策略工程師的大局觀，2025 加入威廉斯組建最強中游雙箭頭。</p><div class="driver-highlights"><strong>代表成就：</strong> 新加坡站絕妙 DRS 保命戰術奪冠、墨西哥站強勢桿位獲勝。</div></div>
+      <div class="driver-card" style="--team-color: #0093cc;"><span class="driver-ghost">10</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Pierre Gasly</h2><span class="driver-num">#10</span></div><div class="driver-meta">法國 (FRA) ｜ Alpine F1 Team</div><p class="driver-bio">經歷波折重回巔峰的實力派車手，在混亂局面與雨地戰局中擁有極強的嗅覺與把握能力。</p><div class="driver-highlights"><strong>代表成就：</strong> 2020 義大利蒙札大獎賽奇蹟奪冠、多次登台。</div></div>
+      <div class="driver-card" style="--team-color: #0093cc;"><span class="driver-ghost">7</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Jack Doohan</h2><span class="driver-num">#7</span></div><div class="driver-meta">澳洲 (AUS) ｜ Alpine F1 Team</div><p class="driver-bio">五屆摩托車世界冠軍 Mick Doohan 之子，在 Alpine 儲備多年後正式獲得正賽席位，單圈極速爆發力強。</p><div class="driver-highlights"><strong>代表成就：</strong> F2 年度前三、Alpine 青訓主力晉升。</div></div>
+      <div class="driver-card" style="--team-color: #6692ff;"><span class="driver-ghost">22</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Yuki Tsunoda</h2><span class="driver-num">#22</span></div><div class="driver-meta">日本 (JPN) ｜ Racing Bulls (VCARB)</div><p class="driver-bio">技術日益純熟的日本代表，排位 Q3 常客，過彎敏捷且制動極深，已成長為車隊能倚重的第一得分主力。</p><div class="driver-highlights"><strong>代表成就：</strong> 屢次殺入排位賽 Q3、中游車隊穩定取分核心。</div></div>
+      <div class="driver-card" style="--team-color: #6692ff;"><span class="driver-ghost">6</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Isack Hadjar</h2><span class="driver-num">#6</span></div><div class="driver-meta">法國 (FRA) ｜ Racing Bulls (VCARB)</div><p class="driver-bio">受到紅牛顧問 Helmut Marko 極高評價的青年才俊，風格大膽果斷，在 F2 賽事中多次展現絕妙超車。</p><div class="driver-highlights"><strong>代表成就：</strong> F2 總冠軍爭奪者、紅牛青訓最新進階正賽車手。</div></div>
+      <div class="driver-card" style="--team-color: #b6babd;"><span class="driver-ghost">31</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Esteban Ocon</h2><span class="driver-num">#31</span></div><div class="driver-meta">法國 (FRA) ｜ Haas F1 Team</div><p class="driver-bio">圍場防守最為硬朗頑強的車手之一，對於煞車防線的死守極為堅持，加盟 Haas 帶來分站冠軍級經驗。</p><div class="driver-highlights"><strong>代表成就：</strong> 2021 匈牙利大獎賽冠軍、雨戰巴西雙頒獎台。</div></div>
+      <div class="driver-card" style="--team-color: #b6babd;"><span class="driver-ghost">87</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Oliver Bearman</h2><span class="driver-num">#87</span></div><div class="driver-meta">英國 (GBR) ｜ Haas F1 Team</div><p class="driver-bio">2024 沙烏地站代打法拉利臨危受命奪得 P7 一戰成名，具備極高的車輛適應力與超前成熟的超車心態。</p><div class="driver-highlights"><strong>代表成就：</strong> 新人代打兩次皆拿積分（Ferrari & Haas）。</div></div>
+      <div class="driver-card" style="--team-color: #52e252;"><span class="driver-ghost">27</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Nico Hülkenberg</h2><span class="driver-num">#27</span></div><div class="driver-meta">德國 (GER) ｜ Stake Sauber (Audi)</div><p class="driver-bio">中游排位賽排位之神，精準穩健的車輛調校能力備受 Audi 讚賞，受命帶領瑞士車隊走向 2026 奧迪廠隊時代。</p><div class="driver-highlights"><strong>代表成就：</strong> 2010 巴西桿位、2015 利曼 24 小時耐力賽總冠軍。</div></div>
+      <div class="driver-card" style="--team-color: #52e252;"><span class="driver-ghost">5</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Gabriel Bortoleto</h2><span class="driver-num">#5</span></div><div class="driver-meta">巴西 (BRA) ｜ Stake Sauber (Audi)</div><p class="driver-bio">阿隆索經紀團隊旗下的巴西競速希望，連續在 F3、F2 奪下統治級佳績，被視為繼 Senna 後巴西重返巔峰的王牌。</p><div class="driver-highlights"><strong>代表成就：</strong> F3 年度總冠軍、F2 年度冠軍級新人。</div></div>
+      <div class="driver-card" style="--team-color: #d4af37;"><span class="driver-ghost">11</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Sergio Pérez</h2><span class="driver-num">#11</span></div><div class="driver-meta">墨西哥 (MEX) ｜ Cadillac F1 Team</div><p class="driver-bio">「保胎大師」與街道賽專家，擁有無可比擬的中游帶隊經驗與長距離正賽節奏，受邀帶領美系新軍開疆拓土。</p><div class="driver-highlights"><strong>代表成就：</strong> 6 座分站冠軍（摩納哥、亞塞拜然、沙烏地等街道戰勝場）。</div></div>
+      <div class="driver-card" style="--team-color: #d4af37;"><span class="driver-ghost">2</span><div style="display:flex; justify-content:space-between;"><h2 class="driver-name">Colton Herta</h2><span class="driver-num">#2</span></div><div class="driver-meta">美國 (USA) ｜ Cadillac F1 Team</div><p class="driver-bio">美國當代最具爆發力的天才車手，IndyCar 史上最年輕分站冠軍，伴隨通用汽車 Cadillac 專案正式叩關 F1 殿堂。</p><div class="driver-highlights"><strong>代表成就：</strong> IndyCar 多次分站冠軍、戴通納 24 小時耐力賽優勝。</div></div>
     </div>
   </main>
   <footer class="site-footer">
-    <div class="footer-main">
-      <a class="brand footer-brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a>
-      <p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p>
-    </div>
+    <div class="footer-main"><a class="brand footer-brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a><p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p></div>
     <div class="footer-bottom"><span>© 2026 F1 INSIDER. FOR EDUCATIONAL PURPOSES.</span><span>BUILT FOR THE LOVE OF RACING.</span></div>
   </footer>
 </body>

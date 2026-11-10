@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="F1 Insider｜賽事指南">
-  <title>觀賽指南｜F1 Insider</title>
+  <meta name="description" content="F1 Insider｜賽事指南與規則旗號百科">
+  <title>觀賽指南與規則旗號百科｜F1 Insider</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -21,20 +21,19 @@
     .guide-tag { color: var(--red); font: 700 11px var(--font-display); letter-spacing: 1.5px; margin-bottom: 6px; }
     .guide-heading { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #fff; }
     .guide-text { font-size: 13px; color: #aaa; line-height: 1.9; }
+    .flags-box { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+    .flag-bar { background: #161616; padding: 8px 10px; font-size: 12px; border-left: 3px solid #555; }
   </style>
 </head>
 <body>
   <div class="top-line"></div>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="../index.html">
-        <span class="brand-mark">F1</span>
-        <span class="brand-name">INSIDER<span class="brand-period">.</span></span>
-      </a>
+      <a class="brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a>
       <nav class="primary-nav">
         <a class="nav-link" href="../index.html">首頁 <span>HOME</span></a>
-        <a class="nav-link" href="drivers.html">車手 <span>DRIVERS</span></a>
-        <a class="nav-link" href="teams.html">車隊 <span>TEAMS</span></a>
+        <a class="nav-link" href="drivers.html">車手 <span>DRIVERS (22)</span></a>
+        <a class="nav-link" href="teams.html">車隊 <span>TEAMS (11)</span></a>
         <a class="nav-link" href="circuits.html">賽道 <span>CIRCUITS</span></a>
         <a class="nav-link active" href="racing-guide.html">賽事指南 <span>GUIDE</span></a>
       </nav>
@@ -43,33 +42,57 @@
   </header>
   <main class="page-container">
     <div class="page-header">
-      <p class="page-kicker">F1 INSIDER / GUIDE</p>
+      <p class="page-kicker">F1 INSIDER / COMPLETE GUIDE & FLAGS</p>
       <h1 class="page-title">一級方程式觀賽百科 <span>RACING GUIDE</span></h1>
-      <p class="page-subtitle">從零開始掌握 Formula 1 必修規則：輪胎配方、DRS 運作原理、進站戰術與積分制度。</p>
+      <p class="page-subtitle">深入淺出掌握 Formula 1 必修規則：輪胎配方代號、DRS 與主動空力、旗號圖鑑、Undercut/Overcut 戰術與違規判罰。</p>
     </div>
     <div class="guide-grid">
       <div class="guide-card">
-        <div class="guide-tag">TIRES & PIT STOPS</div>
+        <div class="guide-tag">TIRES & WINDOWS</div>
         <h2 class="guide-heading">輪胎配方與乾濕地選擇</h2>
-        <p class="guide-text">每場大獎賽倍耐力提供三款乾地胎：軟胎（紅標，最快但磨損快）、中性胎（黃標，速度平衡）、硬胎（白標，最耐磨）。乾地正賽強制必須至少使用兩種不同的輪胎配方，確保至少一次進站換胎戰術。</p>
+        <p class="guide-text">每場大獎賽倍耐力提供三款乾地胎：軟胎（紅標，最快但磨損快）、中性胎（黃標，速度平衡）、硬胎（白標，最耐磨）。乾地正賽強制必須至少使用兩種不同的輪胎配方，確保至少一次進站換胎戰術；雨天則有半雨胎（綠）與全雨胎（藍）。</p>
       </div>
+
       <div class="guide-card">
-        <div class="guide-tag">OVERTAKE WEAPON</div>
-        <h2 class="guide-heading">DRS 可變尾翼超車機制</h2>
-        <p class="guide-text">當後車在偵測點與前車秒差小於 1.0 秒以內，進入啟動區即可按鍵開啟尾翼翼片，降低風阻並換取 10–15 km/h 的直道尾速超車優勢。</p>
+        <div class="guide-tag">OVERTAKE & ACTIVE AERO</div>
+        <h2 class="guide-heading">DRS 可變尾翼與新世代主動空力</h2>
+        <p class="guide-text">當後車在偵測點與前車秒差小於 1.0 秒以內，進入啟動區即可按鍵開啟尾翼翼片，降低風阻並換取 10–15 km/h 的直道尾速超車優勢；新世代規範更加入直道低阻模式（X-Mode）與彎道高下壓力模式（Z-Mode）。</p>
       </div>
+
       <div class="guide-card">
-        <div class="guide-tag">STRATEGY</div>
+        <div class="guide-tag">STRATEGY MATRIX</div>
         <h2 class="guide-heading">Undercut 與 Overcut 戰術</h2>
         <p class="guide-text">Undercut 是在對手先進站前換上新胎利用飛馳圈超車；Overcut 則是留在場上多跑數圈，避開出站車陣擁堵或利用對手輪胎升溫期的戰術翻盤。</p>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-tag">TRACK SAFETY</div>
+        <h2 class="guide-heading">賽道旗號圖鑑</h2>
+        <div class="flags-box">
+          <div class="flag-bar" style="border-color:#00d26a;"><strong>綠旗：</strong> 賽道淨空恢復正常競速</div>
+          <div class="flag-bar" style="border-color:#ffd200;"><strong>黃旗：</strong> 前方危險減速禁止超車</div>
+          <div class="flag-bar" style="border-color:#d71920;"><strong>紅旗：</strong> 賽事暫停全員返回維修通道</div>
+          <div class="flag-bar" style="border-color:#00a3e0;"><strong>藍旗：</strong> 即將被套圈必須讓線</div>
+          <div class="flag-bar" style="border-color:#aaa;"><strong>黑白對角旗：</strong> 運動道德非體育行為警告</div>
+          <div class="flag-bar" style="border-color:#fff;"><strong>黑旗：</strong> 立即退賽並取消比賽資格</div>
+        </div>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-tag">RACE WEEKEND</div>
+        <h2 class="guide-heading">排位賽 Q1/Q2/Q3 淘汰制與衝刺賽</h2>
+        <p class="guide-text">標準週末週五兩次自由練習（FP1、FP2），週六 FP3 與三階段排位賽（Q1 淘汰後 6 位、Q2 淘汰 6 位、Q3 前 10 名爭搶桿位 Pole Position），週日進行 305 公里正賽；衝刺週末則額外包含 100 公里衝刺正賽爭取年度積分。</p>
+      </div>
+
+      <div class="guide-card">
+        <div class="guide-tag">PENALTIES & POINTS</div>
+        <h2 class="guide-heading">幹事裁決與年度積分制度</h2>
+        <p class="guide-text">正賽前 10 名依序獲得 25-18-15-12-10-8-6-4-2-1 分；衝刺賽前 8 名獲 8 至 1 分。常見違規裁處包括出界違規（超過 4 次罰 5 秒）、危險駕駛罰秒或 Drive-Through，並可扣罰超級駕照點數（12 點強制禁賽）。</p>
       </div>
     </div>
   </main>
   <footer class="site-footer">
-    <div class="footer-main">
-      <a class="brand footer-brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a>
-      <p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p>
-    </div>
+    <div class="footer-main"><a class="brand footer-brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a><p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p></div>
     <div class="footer-bottom"><span>© 2026 F1 INSIDER. FOR EDUCATIONAL PURPOSES.</span><span>BUILT FOR THE LOVE OF RACING.</span></div>
   </footer>
 </body>

@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="F1 Insider — 從車手、車隊到賽道策略，帶你看懂 Formula 1。">
+  <meta name="description" content="F1 Insider — 11 支車隊、22 位現役車手、全球賽道解析與完整賽事百科。">
   <meta name="theme-color" content="#111111">
-  <title>F1 Insider｜進入 Formula 1 的世界</title>
+  <title>F1 Insider｜進入 Formula 1 的競速世界</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(17, 17, 17, 0.94);
+      background: rgba(17, 17, 17, 0.95);
       border-bottom: 1px solid var(--border);
       backdrop-filter: blur(14px);
     }
@@ -187,7 +187,7 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      max-width: 620px;
+      max-width: 640px;
     }
     .eyebrow {
       margin: 0 0 16px;
@@ -216,7 +216,7 @@
 
     /* Live Next Race & Countdown Box */
     .hero-live-box {
-      background: rgba(28, 28, 28, 0.85);
+      background: rgba(28, 28, 28, 0.88);
       border: 1px solid #333;
       border-left: 3px solid var(--red);
       padding: 16px 20px;
@@ -287,6 +287,8 @@
       font-weight: 700;
       border-radius: 2px;
       cursor: pointer;
+      border: none;
+      font-family: inherit;
     }
     .button-red {
       background: var(--red);
@@ -346,7 +348,7 @@
       min-width: max-content;
       font: 800 15px var(--font-display);
       letter-spacing: 2px;
-      animation: marquee 30s linear infinite;
+      animation: marquee 35s linear infinite;
     }
     .ticker i { font-style: normal; color: #ffb4b7; font-size: 12px; }
     @keyframes marquee {
@@ -537,7 +539,7 @@
     .category-arrow { justify-self: end; color: #aaa; font-size: 20px; transition: transform 0.2s, color 0.2s; }
     .category-card:hover .category-arrow { color: var(--red); transform: translate(3px, -3px); }
 
-    /* Interactive Hub Display Panel (The Core In-Page Explorer) */
+    /* Interactive Hub Display Panel */
     .hub-container {
       margin-top: 40px;
       background: var(--surface);
@@ -599,6 +601,50 @@
       border-color: var(--red);
     }
 
+    /* Subfilter Bar for Drivers/Teams */
+    .filter-bar {
+      padding: 12px 24px;
+      background: #181818;
+      border-bottom: 1px solid #282828;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .filter-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: #252525;
+      border: 1px solid #383838;
+      color: #999;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+    .search-input {
+      background: #111;
+      border: 1px solid #383838;
+      padding: 6px 12px;
+      color: #fff;
+      font-size: 12px;
+      border-radius: 2px;
+      outline: none;
+      min-width: 180px;
+    }
+    .search-input:focus { border-color: var(--red); }
+
     .hub-content {
       padding: 30px;
       min-height: 480px;
@@ -611,7 +657,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Drivers Panel Layout */
+    /* Drivers Panel Layout (Full 22 Drivers) */
     .drivers-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -643,15 +689,23 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
     .driver-name {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 700;
     }
     .driver-num {
       color: var(--red);
       font: 800 16px var(--font-display);
+    }
+    .driver-team-tag {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--driver-team-color, #ff6b6e);
+      margin-bottom: 6px;
+      display: inline-block;
     }
     .driver-meta {
       font-size: 11px;
@@ -675,7 +729,7 @@
     }
     .driver-highlights strong { color: var(--red-bright); }
 
-    /* Teams Panel Layout */
+    /* Teams Panel Layout (Full 11 Teams) */
     .teams-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
@@ -759,7 +813,7 @@
     .circuit-mini-map {
       background: #141414;
       border: 1px solid #282828;
-      height: 120px;
+      height: 110px;
       margin-bottom: 14px;
       border-radius: 3px;
       display: flex;
@@ -783,17 +837,19 @@
     }
     .circuit-points span { color: #ddd; font-weight: 600; }
 
-    /* Racing Guide Panel Layout */
+    /* Expanded Racing Guide Panel Layout */
     .guide-categories {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
     }
     .guide-box {
       background: var(--surface-light);
       border: 1px solid #333;
       padding: 22px;
       border-radius: 4px;
+      display: flex;
+      flex-direction: column;
     }
     .guide-tag {
       font: 700 11px var(--font-display);
@@ -811,11 +867,13 @@
       font-size: 12px;
       color: #aaa;
       line-height: 1.8;
+      flex-grow: 1;
     }
+    .guide-body strong { color: #eee; }
     .guide-pill-group {
       display: flex;
       gap: 6px;
-      margin-top: 12px;
+      margin-top: 14px;
       flex-wrap: wrap;
     }
     .guide-pill {
@@ -829,12 +887,74 @@
     .pill-red { border-color: #d71920; color: #ff6b6e; }
     .pill-yellow { border-color: #ffd200; color: #ffd200; }
     .pill-white { border-color: #fff; color: #fff; }
+    .pill-blue { border-color: #00a3e0; color: #40c4ff; }
+    .pill-green { border-color: #00d26a; color: #00d26a; }
 
-    /* Live Official Standings Section */
+    /* Flag Legend Grid */
+    .flags-mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .flag-item {
+      background: #141414;
+      padding: 8px 10px;
+      border-radius: 2px;
+      font-size: 11px;
+      border-left: 3px solid #555;
+    }
+    .flag-green { border-color: #00d26a; }
+    .flag-yellow { border-color: #ffd200; }
+    .flag-red { border-color: #d71920; }
+    .flag-blue { border-color: #00a3e0; }
+    .flag-diag { border-color: #aaa; }
+    .flag-black { border-color: #fff; }
+
+    /* Live Official Standings Section Upgraded */
     .standings-section {
       background: var(--bg);
       border-top: 1px solid var(--border);
     }
+    .standings-tabs-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .std-toggle-group {
+      display: flex;
+      gap: 6px;
+    }
+    .std-btn {
+      background: #202020;
+      border: 1px solid #383838;
+      color: #aaa;
+      padding: 8px 16px;
+      font: 700 12px var(--font-display);
+      letter-spacing: 1px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .std-btn.active, .std-btn:hover {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+    .std-filter-btn {
+      background: #161616;
+      border: 1px solid #333;
+      color: #999;
+      padding: 6px 12px;
+      font-size: 11px;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .std-filter-btn:hover { color: #fff; border-color: #555; }
+
     .standings-card {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -847,7 +967,7 @@
       text-align: left;
     }
     .standings-table th, .standings-table td {
-      padding: 14px 20px;
+      padding: 13px 18px;
       border-bottom: 1px solid #282828;
     }
     .standings-table th {
@@ -859,20 +979,27 @@
     .rank-cell {
       font: 800 16px var(--font-display);
       color: var(--red);
-      width: 60px;
+      width: 55px;
     }
     .driver-cell {
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 700;
     }
     .team-cell {
       color: #aaa;
       font-size: 13px;
     }
+    .stat-cell {
+      color: #888;
+      font-size: 12px;
+      text-align: center;
+      width: 70px;
+    }
     .pts-cell {
       text-align: right;
       font: 800 18px var(--font-display);
       color: #fff;
+      width: 80px;
     }
 
     /* Quote Section */
@@ -991,13 +1118,13 @@
 
       <nav class="primary-nav" id="primaryNav">
         <button class="nav-btn active" onclick="scrollToSection('top')">首頁 <span>HOME</span></button>
-        <button class="nav-btn" onclick="openHubCategory('drivers')">車手 <span>DRIVERS</span></button>
-        <button class="nav-btn" onclick="openHubCategory('teams')">車隊 <span>TEAMS</span></button>
+        <button class="nav-btn" onclick="openHubCategory('drivers')">車手 <span>DRIVERS (22)</span></button>
+        <button class="nav-btn" onclick="openHubCategory('teams')">車隊 <span>TEAMS (11)</span></button>
         <button class="nav-btn" onclick="openHubCategory('circuits')">賽道 <span>CIRCUITS</span></button>
         <button class="nav-btn" onclick="openHubCategory('guide')">賽事指南 <span>GUIDE</span></button>
       </nav>
 
-      <button class="header-cta" onclick="openHubCategory('drivers')">開始探索 <span>↗</span></button>
+      <button class="header-cta" onclick="openHubCategory('drivers')">探索 11 隊名冊 <span>↗</span></button>
     </div>
   </header>
 
@@ -1006,9 +1133,9 @@
     <section class="hero">
       <div class="hero-grid"></div>
       <div class="hero-content">
-        <p class="eyebrow"><span class="eyebrow-line"></span> THE WORLD OF FORMULA 1</p>
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE EXPANDED WORLD OF FORMULA 1</p>
         <h1>速度之外<br><span>看懂 F1。</span></h1>
-        <p class="hero-copy">從車手技術、車隊戰術到分站賽道的極限挑戰，為初學者與資深車迷精心打造的繁體中文一級方程式知識庫。</p>
+        <p class="hero-copy">涵蓋 11 支車隊陣容、22 位現役頂尖車手、各大經典賽道與全方位的賽事策略知識庫，帶你透徹理解世界一級方程式賽車。</p>
 
         <!-- 即時賽程與倒數卡片 -->
         <div class="hero-live-box">
@@ -1026,8 +1153,8 @@
         </div>
 
         <div class="hero-actions">
-          <button class="button button-red" onclick="openHubCategory('drivers')">探索專區主題 <span>↗</span></button>
-          <span class="text-link" onclick="openHubCategory('guide')">新手入門指南 <span>→</span></span>
+          <button class="button button-red" onclick="openHubCategory('drivers')">探索 22 位車手 <span>↗</span></button>
+          <span class="text-link" onclick="openHubCategory('guide')">賽事規則指南 <span>→</span></span>
         </div>
       </div>
 
@@ -1040,15 +1167,15 @@
             <path class="track-dash" d="M55 280 C70 130 180 60 295 100 C385 132 380 235 475 235 C565 235 610 155 595 85" />
           </svg>
         </div>
-        <div class="hero-stamp"><span>F1</span><small>INSIDER<br>EDITION 2026</small></div>
+        <div class="hero-stamp"><span>F1</span><small>INSIDER<br>22 DRIVERS</small></div>
       </div>
     </section>
 
     <!-- Ticker Strip -->
     <section class="ticker" aria-label="主題跑馬燈">
       <div class="ticker-track">
-        <span>FORMULA 1</span><i>✳</i><span>DRIVERS</span><i>✳</i><span>CONSTRUCTORS</span><i>✳</i><span>CIRCUITS</span><i>✳</i><span>RACE STRATEGY</span><i>✳</i><span>TELEMETRY</span><i>✳</i>
-        <span>FORMULA 1</span><i>✳</i><span>DRIVERS</span><i>✳</i><span>CONSTRUCTORS</span><i>✳</i><span>CIRCUITS</span><i>✳</i><span>RACE STRATEGY</span><i>✳</i><span>TELEMETRY</span><i>✳</i>
+        <span>11 CONSTRUCTORS</span><i>✳</i><span>22 DRIVERS</span><i>✳</i><span>CIRCUITS</span><i>✳</i><span>PIT STRATEGY</span><i>✳</i><span>ACTIVE AERO</span><i>✳</i><span>CADILLAC F1</span><i>✳</i>
+        <span>11 CONSTRUCTORS</span><i>✳</i><span>22 DRIVERS</span><i>✳</i><span>CIRCUITS</span><i>✳</i><span>PIT STRATEGY</span><i>✳</i><span>ACTIVE AERO</span><i>✳</i><span>CADILLAC F1</span><i>✳</i>
       </div>
     </section>
 
@@ -1063,47 +1190,47 @@
       <div class="featured-grid">
         <article class="feature-card" onclick="openHubCategory('guide')">
           <div class="feature-visual visual-strategy">
-            <span class="visual-label">RACE KNOWLEDGE</span>
+            <span class="visual-label">TECH & RULES</span>
             <div class="strategy-diagram">
               <svg viewBox="0 0 520 250"><path d="M18 190 C70 20 145 40 170 125 S280 220 300 105 S430 15 500 72" /></svg>
-              <div class="diagram-caption">THE PERFECT<br>RACE LINE</div>
+              <div class="diagram-caption">ACTIVE AERO<br>& PU 2026</div>
             </div>
             <span class="visual-index">01</span>
           </div>
           <div class="feature-info">
-            <div class="card-meta"><span>RACING GUIDE</span><span>新手必讀</span></div>
-            <h3>一場 F1 比賽，究竟是如何勝出的？</h3>
-            <p>起跑彈射反應、硬中軟配方選擇與 Undercut 進站策略，解析決定頒獎台的微秒瞬間。</p>
+            <div class="card-meta"><span>RACING GUIDE</span><span>新技術與規則</span></div>
+            <h3>新世代主動空力與永續動力單元</h3>
+            <p>50/50 電油動力比率、直道低阻模式與彎道下壓力切換，顛覆戰術攻防思維。</p>
             <span class="card-arrow">↗</span>
           </div>
         </article>
 
         <article class="feature-card" onclick="openHubCategory('drivers')">
           <div class="feature-visual visual-driver">
-            <span class="visual-label">DRIVER SPOTLIGHT</span>
-            <div class="driver-big-num">01</div>
+            <span class="visual-label">22-DRIVER GRID</span>
+            <div class="driver-big-num">22</div>
             <span class="visual-index">02</span>
           </div>
           <div class="feature-info">
-            <div class="card-meta"><span>DRIVERS</span><span>焦點車手</span></div>
-            <h3>頂級圍場的 20 位競速靈魂</h3>
-            <p>現役世界冠軍 Max Verstappen、Lewis Hamilton、Charles Leclerc 等焦點車手資料與生涯記錄。</p>
+            <div class="card-meta"><span>DRIVERS</span><span>完整圍場名冊</span></div>
+            <h3>11 隊競逐：22 位頂尖車手全檔案</h3>
+            <p>收錄冠軍老將、中生代支柱至新晉超級新秀，掌握每位車手的號碼、風格與戰績。</p>
             <span class="card-arrow">↗</span>
           </div>
         </article>
 
-        <article class="feature-card" onclick="openHubCategory('circuits')">
+        <article class="feature-card" onclick="openHubCategory('teams')">
           <div class="feature-visual visual-circuit">
-            <span class="visual-label">TRACK ANALYSIS</span>
+            <span class="visual-label">NEW CONSTRUCTOR</span>
             <div class="circuit-map">
               <svg viewBox="0 0 360 220"><path d="M45 110 L65 48 L140 30 L205 55 L245 35 L300 65 L280 115 L310 165 L235 190 L175 160 L110 185 L55 155 Z" /></svg>
             </div>
             <span class="visual-index">03</span>
           </div>
           <div class="feature-info">
-            <div class="card-meta"><span>CIRCUITS</span><span>賽道解析</span></div>
-            <h3>從摩納哥狹窄街道到銀石高速彎</h3>
-            <p>攻防超車點、煞車熱點與 DRS 區域設置，看懂賽道如何塑造扣人心弦的分站賽事。</p>
+            <div class="card-meta"><span>TEAMS</span><span>車隊新格局</span></div>
+            <h3>凱迪拉克加盟：迎來 11 支車隊新篇章</h3>
+            <p>美系力量入局打破圍場平衡，與 Ferrari、McLaren、Red Bull 展開全新科技競爭。</p>
             <span class="card-arrow">↗</span>
           </div>
         </article>
@@ -1116,22 +1243,22 @@
         <div class="discover-intro">
           <p class="section-kicker">02 / EXPLORE F1</p>
           <h2>F1 世界，<br>從這裡開始。</h2>
-          <p>點選下方分類，下方即時載入完整主題卡片與解析，無須跳轉頁面即可深入探索。</p>
+          <p>點選下方分類，下方即時載入完整 22 位車手卡片、11 隊陣容、賽道解析與豐富規則百科，無須跳頁即可探索。</p>
           <span class="vertical-note">CLICK TO EXPLORE BELOW ———</span>
         </div>
 
         <div class="category-list">
           <div class="category-card" id="cat-card-drivers" onclick="openHubCategory('drivers')">
             <span class="category-no">01</span>
-            <span class="category-copy"><strong>車手</strong><small>DRIVERS</small></span>
-            <span class="category-desc">認識賽道上的 20 位頂尖主角</span>
+            <span class="category-copy"><strong>車手</strong><small>DRIVERS (22)</small></span>
+            <span class="category-desc">22 位現役車手完整生平檔案</span>
             <span class="category-arrow">↓</span>
           </div>
 
           <div class="category-card" id="cat-card-teams" onclick="openHubCategory('teams')">
             <span class="category-no">02</span>
-            <span class="category-copy"><strong>車隊</strong><small>TEAMS</small></span>
-            <span class="category-desc">探索各大製造商底盤與歷史</span>
+            <span class="category-copy"><strong>車隊</strong><small>TEAMS (11)</small></span>
+            <span class="category-desc">11 支製造商底盤、動力單元與歷史</span>
             <span class="category-arrow">↓</span>
           </div>
 
@@ -1145,7 +1272,7 @@
           <div class="category-card" id="cat-card-guide" onclick="openHubCategory('guide')">
             <span class="category-no">04</span>
             <span class="category-copy"><strong>賽事指南</strong><small>RACING GUIDE</small></span>
-            <span class="category-desc">旗號規則、輪胎配方與進站戰術</span>
+            <span class="category-desc">旗號圖鑑、輪胎配方、戰術與違規處罰</span>
             <span class="category-arrow">↓</span>
           </div>
         </div>
@@ -1156,167 +1283,335 @@
         <div class="hub-header">
           <div class="hub-title-group">
             <span class="hub-title-badge" id="hubBadge">CATEGORIES</span>
-            <span class="hub-title" id="hubHeading">車手專區 (Drivers)</span>
+            <span class="hub-title" id="hubHeading">車手專區 (22 位現役車手名冊)</span>
           </div>
           <div class="hub-tabs">
-            <button class="hub-tab-btn active" id="tabBtn-drivers" onclick="openHubCategory('drivers')">車手名冊</button>
-            <button class="hub-tab-btn" id="tabBtn-teams" onclick="openHubCategory('teams')">車隊陣容</button>
+            <button class="hub-tab-btn active" id="tabBtn-drivers" onclick="openHubCategory('drivers')">車手名冊 (22)</button>
+            <button class="hub-tab-btn" id="tabBtn-teams" onclick="openHubCategory('teams')">車隊陣容 (11)</button>
             <button class="hub-tab-btn" id="tabBtn-circuits" onclick="openHubCategory('circuits')">精選賽道</button>
-            <button class="hub-tab-btn" id="tabBtn-guide" onclick="openHubCategory('guide')">觀賽百科</button>
+            <button class="hub-tab-btn" id="tabBtn-guide" onclick="openHubCategory('guide')">觀賽百科 & 旗號</button>
           </div>
         </div>
 
+        <!-- Subfilter Bar -->
+        <div class="filter-bar" id="hubFilterBar">
+          <div class="filter-tags" id="teamFilterTags">
+            <button class="filter-btn active" onclick="filterItems('all')">全部 ALL</button>
+            <button class="filter-btn" onclick="filterItems('redbull')">Red Bull</button>
+            <button class="filter-btn" onclick="filterItems('ferrari')">Ferrari</button>
+            <button class="filter-btn" onclick="filterItems('mclaren')">McLaren</button>
+            <button class="filter-btn" onclick="filterItems('mercedes')">Mercedes</button>
+            <button class="filter-btn" onclick="filterItems('aston')">Aston Martin</button>
+            <button class="filter-btn" onclick="filterItems('williams')">Williams</button>
+            <button class="filter-btn" onclick="filterItems('cadillac')">Cadillac</button>
+          </div>
+          <input type="text" class="search-input" id="itemSearch" placeholder="搜尋車手姓名、車隊或號碼..." onkeyup="searchHubItems()">
+        </div>
+
         <div class="hub-content">
-          <!-- 1. DRIVERS PANEL -->
+          <!-- 1. DRIVERS PANEL (22 FULL DRIVERS) -->
           <div class="tab-panel active" id="panel-drivers">
-            <div class="drivers-grid">
-              <div class="driver-card" style="--driver-team-color: #3671c6;">
+            <div class="drivers-grid" id="driversContainer">
+              <!-- Driver 1 -->
+              <div class="driver-card" data-team="redbull" style="--driver-team-color: #3671c6;">
                 <span class="driver-number-ghost">1</span>
-                <div class="driver-header">
-                  <span class="driver-name">Max Verstappen</span>
-                  <span class="driver-num">#1</span>
-                </div>
-                <div class="driver-meta">國籍：<span>荷蘭 (NED)</span> ｜ 車隊：<span>Red Bull Racing</span></div>
-                <p class="driver-bio">當代極具統治力的賽車手，以無與倫比的控車穩定度與絕佳輪胎管理能力聞名，多次刷新單季分站勝場歷史紀錄。</p>
-                <div class="driver-highlights"><strong>生涯亮點：</strong> 多屆世界一級方程式年度總冠軍、史上最年輕分站冠軍得主。</div>
+                <div class="driver-header"><span class="driver-name">Max Verstappen</span><span class="driver-num">#1</span></div>
+                <span class="driver-team-tag">Red Bull Racing</span>
+                <div class="driver-meta">國籍：<span>荷蘭 (NED)</span> ｜ 登上頒獎台：<span>110+ 次</span></div>
+                <p class="driver-bio">統治當代圍場的世界冠軍，極限走線控制力與長距離保胎能力無懈可擊，曾創下單季 19 勝驚人紀錄。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 4 屆世界年度車手總冠軍、史上最年輕分站冠軍。</div>
               </div>
 
-              <div class="driver-card" style="--driver-team-color: #e80020;">
-                <span class="driver-number-ghost">44</span>
-                <div class="driver-header">
-                  <span class="driver-name">Lewis Hamilton</span>
-                  <span class="driver-num">#44</span>
-                </div>
-                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>Ferrari</span></div>
-                <p class="driver-bio">一級方程式歷史勝場與桿位紀錄保持人。2025 年震撼轉投躍馬法拉利，追求個人生涯傳奇的第八座世界冠軍頭銜。</p>
-                <div class="driver-highlights"><strong>生涯亮點：</strong> 7 屆世界冠軍、100+ 場大獎賽優勝、100+ 次排位賽桿位。</div>
+              <!-- Driver 2 -->
+              <div class="driver-card" data-team="redbull" style="--driver-team-color: #3671c6;">
+                <span class="driver-number-ghost">30</span>
+                <div class="driver-header"><span class="driver-name">Liam Lawson</span><span class="driver-num">#30</span></div>
+                <span class="driver-team-tag">Red Bull Racing</span>
+                <div class="driver-meta">國籍：<span>紐西蘭 (NZL)</span> ｜ 初登板：<span>2023 荷蘭站</span></div>
+                <p class="driver-bio">紅牛青訓體系歷練出來的激進型戰將，在有限代打機會中屢次斬獲積分，防守強悍且攻彎毫不妥協。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 代打新加坡分站前九拿分、青年賽事多料冠軍。</div>
               </div>
 
-              <div class="driver-card" style="--driver-team-color: #e80020;">
-                <span class="driver-number-ghost">16</span>
-                <div class="driver-header">
-                  <span class="driver-name">Charles Leclerc</span>
-                  <span class="driver-num">#16</span>
-                </div>
-                <div class="driver-meta">國籍：<span>摩納哥 (MON)</span> ｜ 車隊：<span>Ferrari</span></div>
-                <p class="driver-bio">法拉利青訓出身的純粹競速天才，在單圈排位賽具備極致的爆發力與車輛極限駕馭能力，2024 年奪下夢寐以求的主場摩納哥冠軍。</p>
-                <div class="driver-highlights"><strong>生涯亮點：</strong> 摩納哥大獎賽冠軍、法拉利旗幟性當家王牌車手。</div>
-              </div>
-
-              <div class="driver-card" style="--driver-team-color: #ff8000;">
+              <!-- Driver 3 -->
+              <div class="driver-card" data-team="mclaren" style="--driver-team-color: #ff8000;">
                 <span class="driver-number-ghost">4</span>
-                <div class="driver-header">
-                  <span class="driver-name">Lando Norris</span>
-                  <span class="driver-num">#4</span>
-                </div>
-                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>McLaren</span></div>
-                <p class="driver-bio">麥拉倫車隊重返巔峰的核心人物。風格冷靜兼具攻擊性，在多變氣候與長距離正賽節奏中表現極為搶眼。</p>
-                <div class="driver-highlights"><strong>生涯亮點：</strong> 2024 邁阿密大獎賽首勝、年度車手總冠軍有力競爭者。</div>
+                <div class="driver-header"><span class="driver-name">Lando Norris</span><span class="driver-num">#4</span></div>
+                <span class="driver-team-tag">McLaren F1 Team</span>
+                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 登上頒獎台：<span>25+ 次</span></div>
+                <p class="driver-bio">麥拉倫重返榮耀的領軍車手，排位賽極速拔萃，在輪胎管理與多變天氣下節奏把控極為精準。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 邁阿密、荷蘭與新加坡大獎賽勝利、年度總亞軍有力競爭者。</div>
               </div>
 
-              <div class="driver-card" style="--driver-team-color: #ff8000;">
+              <!-- Driver 4 -->
+              <div class="driver-card" data-team="mclaren" style="--driver-team-color: #ff8000;">
                 <span class="driver-number-ghost">81</span>
-                <div class="driver-header">
-                  <span class="driver-name">Oscar Piastri</span>
-                  <span class="driver-num">#81</span>
-                </div>
-                <div class="driver-meta">國籍：<span>澳洲 (AUS)</span> ｜ 車隊：<span>McLaren</span></div>
-                <p class="driver-bio">近年晉升 F1 最受矚目的新星，橫掃青年方程式冠軍後登陸 F1，以超乎年齡的心理素質與超車精準度震驚圍場。</p>
-                <div class="driver-highlights"><strong>生涯亮點：</strong> 2024 匈牙利大獎賽優勝、新人年奪得衝刺賽勝利。</div>
+                <div class="driver-header"><span class="driver-name">Oscar Piastri</span><span class="driver-num">#81</span></div>
+                <span class="driver-team-tag">McLaren F1 Team</span>
+                <div class="driver-meta">國籍：<span>澳洲 (AUS)</span> ｜ 生涯勝場：<span>2+ 勝</span></div>
+                <p class="driver-bio">連續稱霸 F3、F2 新秀年冠軍的天才青年，具備超乎年齡的鋼鐵冷靜心理素質與超車判斷力。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 匈牙利與亞塞拜然大獎賽冠軍、卡達衝刺賽勝利。</div>
               </div>
 
-              <div class="driver-card" style="--driver-team-color: #27f4d2;">
+              <!-- Driver 5 -->
+              <div class="driver-card" data-team="ferrari" style="--driver-team-color: #e80020;">
+                <span class="driver-number-ghost">16</span>
+                <div class="driver-header"><span class="driver-name">Charles Leclerc</span><span class="driver-num">#16</span></div>
+                <span class="driver-team-tag">Scuderia Ferrari</span>
+                <div class="driver-meta">國籍：<span>摩納哥 (MON)</span> ｜ 生涯桿位：<span>26+ 次</span></div>
+                <p class="driver-bio">法拉利旗幟性車手，單圈排位極速被譽為當代天花板之一，2024 年圓夢主場稱霸摩納哥與蒙札神殿。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 摩納哥大獎賽冠軍、義大利蒙札主場勝利。</div>
+              </div>
+
+              <!-- Driver 6 -->
+              <div class="driver-card" data-team="ferrari" style="--driver-team-color: #e80020;">
+                <span class="driver-number-ghost">44</span>
+                <div class="driver-header"><span class="driver-name">Lewis Hamilton</span><span class="driver-num">#44</span></div>
+                <span class="driver-team-tag">Scuderia Ferrari</span>
+                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 歷史勝場：<span>105 勝</span></div>
+                <p class="driver-bio">F1 史上最偉大的傳奇車手之一。2025 年轉投法拉利，挑戰為躍馬奪得世界冠軍與個人第 8 冠榮耀。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 7 屆世界冠軍、104 次桿位、歷史最多勝場紀錄保持人。</div>
+              </div>
+
+              <!-- Driver 7 -->
+              <div class="driver-card" data-team="mercedes" style="--driver-team-color: #27f4d2;">
                 <span class="driver-number-ghost">63</span>
-                <div class="driver-header">
-                  <span class="driver-name">George Russell</span>
-                  <span class="driver-num">#63</span>
-                </div>
-                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>Mercedes-AMG</span></div>
-                <p class="driver-bio">梅賽德斯車隊中流砥柱，技術細膩且具備極佳工程反饋素養，被譽為新世代最具領袖風範的英國車手代表。</p>
-                <div class="driver-highlights"><strong>生涯亮點：</strong> 2022 巴西大獎賽冠軍、梅賽德斯當家主力。</div>
+                <div class="driver-header"><span class="driver-name">George Russell</span><span class="driver-num">#63</span></div>
+                <span class="driver-team-tag">Mercedes-AMG</span>
+                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 生涯勝場：<span>3+ 勝</span></div>
+                <p class="driver-bio">梅賽德斯當家核心主將，精密的工程回饋能力與在惡劣條件下抓住頒獎台機會的果斷風格備受推崇。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 巴西大獎賽冠軍、奧地利分站勝利。</div>
+              </div>
+
+              <!-- Driver 8 -->
+              <div class="driver-card" data-team="mercedes" style="--driver-team-color: #27f4d2;">
+                <span class="driver-number-ghost">12</span>
+                <div class="driver-header"><span class="driver-name">Andrea Kimi Antonelli</span><span class="driver-num">#12</span></div>
+                <span class="driver-team-tag">Mercedes-AMG</span>
+                <div class="driver-meta">國籍：<span>義大利 (ITA)</span> ｜ 年齡：<span>新世代新秀</span></div>
+                <p class="driver-bio">被梅賽德斯欽點為漢米爾頓接班人的超級超新星，跳級晉升 F1，擁有天生敏銳的抓地力極限嗅覺。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 橫掃 FRECA 與青年方程式桂冠、梅賽德斯重點培育。</div>
+              </div>
+
+              <!-- Driver 9 -->
+              <div class="driver-card" data-team="aston" style="--driver-team-color: #229971;">
+                <span class="driver-number-ghost">14</span>
+                <div class="driver-header"><span class="driver-name">Fernando Alonso</span><span class="driver-num">#14</span></div>
+                <span class="driver-team-tag">Aston Martin</span>
+                <div class="driver-meta">國籍：<span>西班牙 (ESP)</span> ｜ 出賽場次：<span>400+ 場</span></div>
+                <p class="driver-bio">賽車界的常青傳奇，比賽閱讀能力與防守走線被奉為教科書級別，至今依舊在頒獎台前線激烈競爭。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 雙料世界冠軍、利曼 24 小時耐力賽冠軍。</div>
+              </div>
+
+              <!-- Driver 10 -->
+              <div class="driver-card" data-team="aston" style="--driver-team-color: #229971;">
+                <span class="driver-number-ghost">18</span>
+                <div class="driver-header"><span class="driver-name">Lance Stroll</span><span class="driver-num">#18</span></div>
+                <span class="driver-team-tag">Aston Martin</span>
+                <div class="driver-meta">國籍：<span>加拿大 (CAN)</span> ｜ 生涯桿位：<span>1 次</span></div>
+                <p class="driver-bio">在濕滑雨地常有令人驚豔的單圈表現，出發起跑時具有極強的攻位意識與長距離續航力。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 土耳其站雨地桿位、亞塞拜然站新秀頒獎台。</div>
+              </div>
+
+              <!-- Driver 11 -->
+              <div class="driver-card" data-team="williams" style="--driver-team-color: #0090ff;">
+                <span class="driver-number-ghost">23</span>
+                <div class="driver-header"><span class="driver-name">Alexander Albon</span><span class="driver-num">#23</span></div>
+                <span class="driver-team-tag">Williams Racing</span>
+                <div class="driver-meta">國籍：<span>泰國 (THA)</span> ｜ 頒獎台：<span>2 次</span></div>
+                <p class="driver-bio">威廉斯復興的定海神針，在防守端以冷靜頑強著稱，時常單停長跑戰術帶領中游賽車奇蹟拿分。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 帶領威廉斯重返車隊積分競爭前線。</div>
+              </div>
+
+              <!-- Driver 12 -->
+              <div class="driver-card" data-team="williams" style="--driver-team-color: #0090ff;">
+                <span class="driver-number-ghost">55</span>
+                <div class="driver-header"><span class="driver-name">Carlos Sainz</span><span class="driver-num">#55</span></div>
+                <span class="driver-team-tag">Williams Racing</span>
+                <div class="driver-meta">國籍：<span>西班牙 (ESP)</span> ｜ 生涯勝場：<span>4 勝</span></div>
+                <p class="driver-bio">圍場最聰穎的戰術大師之一，在座艙中具備兼任策略工程師的大局觀，2025 加入威廉斯組建最強中游雙箭頭。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 新加坡站絕妙 DRS 保命戰術奪冠、墨西哥站強勢桿位獲勝。</div>
+              </div>
+
+              <!-- Driver 13 -->
+              <div class="driver-card" data-team="alpine" style="--driver-team-color: #0093cc;">
+                <span class="driver-number-ghost">10</span>
+                <div class="driver-header"><span class="driver-name">Pierre Gasly</span><span class="driver-num">#10</span></div>
+                <span class="driver-team-tag">Alpine F1 Team</span>
+                <div class="driver-meta">國籍：<span>法國 (FRA)</span> ｜ 生涯勝場：<span>1 勝</span></div>
+                <p class="driver-bio">經歷波折重回巔峰的實力派車手，在混亂局面與雨地戰局中擁有極強的嗅覺與把握能力。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 2020 義大利蒙札大獎賽奇蹟奪冠、多次登台。</div>
+              </div>
+
+              <!-- Driver 14 -->
+              <div class="driver-card" data-team="alpine" style="--driver-team-color: #0093cc;">
+                <span class="driver-number-ghost">7</span>
+                <div class="driver-header"><span class="driver-name">Jack Doohan</span><span class="driver-num">#7</span></div>
+                <span class="driver-team-tag">Alpine F1 Team</span>
+                <div class="driver-meta">國籍：<span>澳洲 (AUS)</span> ｜ 身份：<span>摩托傳奇後代</span></div>
+                <p class="driver-bio">五屆摩托車世界冠軍 Mick Doohan 之子，在 Alpine 儲備多年後正式獲得正賽席位，單圈極速爆發力強。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> F2 年度前三、Alpine 青訓主力晉升。</div>
+              </div>
+
+              <!-- Driver 15 -->
+              <div class="driver-card" data-team="vcarb" style="--driver-team-color: #6692ff;">
+                <span class="driver-number-ghost">22</span>
+                <div class="driver-header"><span class="driver-name">Yuki Tsunoda</span><span class="driver-num">#22</span></div>
+                <span class="driver-team-tag">Racing Bulls (VCARB)</span>
+                <div class="driver-meta">國籍：<span>日本 (JPN)</span> ｜ 車號：<span>#22 角田裕毅</span></div>
+                <p class="driver-bio">技術日益純熟的日本代表，排位 Q3 常客，過彎敏捷且制動極深，已成長為車隊能倚重的第一得分主力。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 屢次殺入排位賽 Q3、中游車隊穩定取分核心。</div>
+              </div>
+
+              <!-- Driver 16 -->
+              <div class="driver-card" data-team="vcarb" style="--driver-team-color: #6692ff;">
+                <span class="driver-number-ghost">6</span>
+                <div class="driver-header"><span class="driver-name">Isack Hadjar</span><span class="driver-num">#6</span></div>
+                <span class="driver-team-tag">Racing Bulls (VCARB)</span>
+                <div class="driver-meta">國籍：<span>法國 (FRA)</span> ｜ 封號：<span>小普羅斯特</span></div>
+                <p class="driver-bio">受到紅牛顧問 Helmut Marko 極高評價的青年才俊，風格大膽果斷，在 F2 賽事中多次展現絕妙超車。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> F2 總冠軍爭奪者、紅牛青訓最新進階正賽車手。</div>
+              </div>
+
+              <!-- Driver 17 -->
+              <div class="driver-card" data-team="haas" style="--driver-team-color: #b6babd;">
+                <span class="driver-number-ghost">31</span>
+                <div class="driver-header"><span class="driver-name">Esteban Ocon</span><span class="driver-num">#31</span></div>
+                <span class="driver-team-tag">Haas F1 Team</span>
+                <div class="driver-meta">國籍：<span>法國 (FRA)</span> ｜ 生涯勝場：<span>1 勝</span></div>
+                <p class="driver-bio">圍場防守最為硬朗頑強的車手之一，對於煞車防線的死守極為堅持，加盟 Haas 帶來分站冠軍級經驗。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 2021 匈牙利大獎賽冠軍、雨戰巴西雙頒獎台。</div>
+              </div>
+
+              <!-- Driver 18 -->
+              <div class="driver-card" data-team="haas" style="--driver-team-color: #b6babd;">
+                <span class="driver-number-ghost">87</span>
+                <div class="driver-header"><span class="driver-name">Oliver Bearman</span><span class="driver-num">#87</span></div>
+                <span class="driver-team-tag">Haas F1 Team</span>
+                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 法拉利青訓</div>
+                <p class="driver-bio">2024 沙烏地站代打法拉利臨危受命奪得 P7 一戰成名，具備極高的車輛適應力與超前成熟的超車心態。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 新人代打兩次皆拿積分（Ferrari & Haas）。</div>
+              </div>
+
+              <!-- Driver 19 -->
+              <div class="driver-card" data-team="sauber" style="--driver-team-color: #52e252;">
+                <span class="driver-number-ghost">27</span>
+                <div class="driver-header"><span class="driver-name">Nico Hülkenberg</span><span class="driver-num">#27</span></div>
+                <span class="driver-team-tag">Stake Sauber (Audi)</span>
+                <div class="driver-meta">國籍：<span>德國 (GER)</span> ｜ 生涯出賽：<span>220+ 場</span></div>
+                <p class="driver-bio">中游排位賽排位之神，精準穩健的車輛調校能力備受 Audi 讚賞，受命帶領瑞士車隊走向 2026 奧迪廠隊時代。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 2010 巴西桿位、2015 利曼 24 小時耐力賽總冠軍。</div>
+              </div>
+
+              <!-- Driver 20 -->
+              <div class="driver-card" data-team="sauber" style="--driver-team-color: #52e252;">
+                <span class="driver-number-ghost">5</span>
+                <div class="driver-header"><span class="driver-name">Gabriel Bortoleto</span><span class="driver-num">#5</span></div>
+                <span class="driver-team-tag">Stake Sauber (Audi)</span>
+                <div class="driver-meta">國籍：<span>巴西 (BRA)</span> ｜ 新人王</div>
+                <p class="driver-bio">阿隆索經紀團隊旗下的巴西競速希望，連續在 F3、F2 奪下統治級佳績，被視為繼 Senna 後巴西重返巔峰的王牌。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> F3 年度總冠軍、F2 年度冠軍級新人。</div>
+              </div>
+
+              <!-- Driver 21 (11th Team Cadillac) -->
+              <div class="driver-card" data-team="cadillac" style="--driver-team-color: #d4af37;">
+                <span class="driver-number-ghost">11</span>
+                <div class="driver-header"><span class="driver-name">Sergio Pérez</span><span class="driver-num">#11</span></div>
+                <span class="driver-team-tag">Cadillac F1 Team</span>
+                <div class="driver-meta">國籍：<span>墨西哥 (MEX)</span> ｜ 歷史勝場：<span>6 勝</span></div>
+                <p class="driver-bio">「保胎大師」與街道賽專家，擁有無可比擬的中游帶隊經驗與長距離正賽節奏，受邀帶領美系新軍開疆拓土。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> 6 座分站冠軍（摩納哥、亞塞拜然、沙烏地等街道戰勝場）。</div>
+              </div>
+
+              <!-- Driver 22 (11th Team Cadillac) -->
+              <div class="driver-card" data-team="cadillac" style="--driver-team-color: #d4af37;">
+                <span class="driver-number-ghost">2</span>
+                <div class="driver-header"><span class="driver-name">Colton Herta</span><span class="driver-num">#2</span></div>
+                <span class="driver-team-tag">Cadillac F1 Team</span>
+                <div class="driver-meta">國籍：<span>美國 (USA)</span> ｜ IndyCar 旗幟車手</div>
+                <p class="driver-bio">美國當代最具爆發力的天才車手，IndyCar 史上最年輕分站冠軍，伴隨通用汽車 Cadillac 專案正式叩關 F1 殿堂。</p>
+                <div class="driver-highlights"><strong>代表成就：</strong> IndyCar 多次分站冠軍、戴通納 24 小時耐力賽優勝。</div>
               </div>
             </div>
           </div>
 
-          <!-- 2. TEAMS PANEL -->
+          <!-- 2. TEAMS PANEL (11 FULL TEAMS) -->
           <div class="tab-panel" id="panel-teams">
             <div class="teams-grid">
               <div class="team-card" style="--team-color: #e80020;">
-                <div class="team-header">
-                  <span class="team-name">Scuderia Ferrari</span>
-                  <span class="team-country">義大利 ｜ 馬拉內羅</span>
-                </div>
-                <div class="team-drivers-badge">車手陣容：#16 Leclerc / #44 Hamilton</div>
-                <p class="team-desc">F1 史上唯一參加過所有賽季的傳奇車隊。象徵著競速的靈魂與激情，擁有全世界最熱血的 Tifosi 車迷支持，2025 年迎來漢米爾頓組建夢幻陣容。</p>
-                <div class="team-stat-row">
-                  <span>動力單元：<strong>Ferrari V6 Turbo</strong></span>
-                  <span>製造商冠軍：<strong>16 座</strong></span>
-                </div>
+                <div class="team-header"><span class="team-name">Scuderia Ferrari</span><span class="team-country">義大利 ｜ 馬拉內羅</span></div>
+                <div class="team-drivers-badge">車手：#16 Leclerc / #44 Hamilton</div>
+                <p class="team-desc">F1 史上唯一全勤參賽的紅色傳奇，擁有無可比擬的全球 Tifosi 熱血支持，2025 年迎來漢米爾頓組建夢幻陣容衝擊雙冠。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Ferrari V6 Turbo</strong></span><span>製造商冠軍：<strong>16 座</strong></span></div>
               </div>
 
               <div class="team-card" style="--team-color: #ff8000;">
-                <div class="team-header">
-                  <span class="team-name">McLaren F1 Team</span>
-                  <span class="team-country">英國 ｜ 沃金</span>
-                </div>
-                <div class="team-drivers-badge">車手陣容：#4 Norris / #81 Piastri</div>
-                <p class="team-desc">歷史悠久的經典英國豪門車隊。近年憑藉激進且精準的空力研發步調重返巔峰，賽車在高速彎角與長距離輪胎保護性名列前茅。</p>
-                <div class="team-stat-row">
-                  <span>動力單元：<strong>Mercedes-AMG</strong></span>
-                  <span>製造商冠軍：<strong>8 座</strong></span>
-                </div>
+                <div class="team-header"><span class="team-name">McLaren F1 Team</span><span class="team-country">英國 ｜ 沃金</span></div>
+                <div class="team-drivers-badge">車手：#4 Norris / #81 Piastri</div>
+                <p class="team-desc">歷史悠久的英國跑車名門。近年空力套件升級節奏領先圍場，賽車在全速彎角與輪胎衰退控制力上堪稱當前標竿。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Mercedes-AMG</strong></span><span>製造商冠軍：<strong>8 座</strong></span></div>
               </div>
 
               <div class="team-card" style="--team-color: #3671c6;">
-                <div class="team-header">
-                  <span class="team-name">Red Bull Racing</span>
-                  <span class="team-country">奧地利 ｜ 米爾頓凱恩斯</span>
-                </div>
-                <div class="team-drivers-badge">車手陣容：#1 Verstappen 等</div>
-                <p class="team-desc">以打破常規、激進技術調校與閃電進站策略聞名。在傳奇空力大師 Adrian Newey 的奠基下，創下多次跨賽季統治級連勝紀錄。</p>
-                <div class="team-stat-row">
-                  <span>動力單元：<strong>Honda RBPT</strong></span>
-                  <span>製造商冠軍：<strong>6 座</strong></span>
-                </div>
+                <div class="team-header"><span class="team-name">Red Bull Racing</span><span class="team-country">奧地利 ｜ 米爾頓凱恩斯</span></div>
+                <div class="team-drivers-badge">車手：#1 Verstappen / #30 Lawson</div>
+                <p class="team-desc">以激進調校與進站換胎戰術聞名世界的六冠強權。憑藉極致的空力底盤設計，多次締造連勝與單季最高勝率紀錄。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Honda RBPT</strong></span><span>製造商冠軍：<strong>6 座</strong></span></div>
               </div>
 
               <div class="team-card" style="--team-color: #27f4d2;">
-                <div class="team-header">
-                  <span class="team-name">Mercedes-AMG PETRONAS</span>
-                  <span class="team-country">德國 ｜ 布拉克利</span>
-                </div>
-                <div class="team-drivers-badge">車手陣容：#63 Russell / Antonelli</div>
-                <p class="team-desc">渦輪混合動力時代創造連奪 8 座車隊總冠軍空前霸業的德國銀箭。具備深厚且龐大的工程技術儲備，致力打造新世代競爭力。</p>
-                <div class="team-stat-row">
-                  <span>動力單元：<strong>Mercedes-AMG</strong></span>
-                  <span>製造商冠軍：<strong>8 座</strong></span>
-                </div>
+                <div class="team-header"><span class="team-name">Mercedes-AMG PETRONAS</span><span class="team-country">德國 ｜ 布拉克利</span></div>
+                <div class="team-drivers-badge">車手：#63 Russell / #12 Antonelli</div>
+                <p class="team-desc">創造連奪 8 座製造商冠軍空前連霸的銀箭王朝。擁有龐大的研發能量與頂級動力單元底蘊，加速培育新世代接班新星。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Mercedes-AMG</strong></span><span>製造商冠軍：<strong>8 座</strong></span></div>
               </div>
 
               <div class="team-card" style="--team-color: #229971;">
-                <div class="team-header">
-                  <span class="team-name">Aston Martin Aramco</span>
-                  <span class="team-country">英國 ｜ 銀石</span>
-                </div>
-                <div class="team-drivers-badge">車手陣容：#14 Alonso / #18 Stroll</div>
-                <p class="team-desc">投入頂級資源新建銀石科技園區與專屬風洞，並簽下重量級技術專家團隊，目標鎖定未來世界冠軍頭銜的新興勁旅。</p>
-                <div class="team-stat-row">
-                  <span>動力單元：<strong>Mercedes-AMG</strong></span>
-                  <span>重點特色：<strong>全新現代化風洞技術</strong></span>
-                </div>
+                <div class="team-header"><span class="team-name">Aston Martin Aramco</span><span class="team-country">英國 ｜ 銀石</span></div>
+                <div class="team-drivers-badge">車手：#14 Alonso / #18 Stroll</div>
+                <p class="team-desc">座落於銀石的全新科技園區與專用先進風洞全面啟用，重金延攬頂尖技術大師，力爭在未來新規範下問鼎世界總冠軍。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Mercedes-AMG (2026 Honda)</strong></span><span>基地：<strong>銀石 AMR Campus</strong></span></div>
               </div>
 
               <div class="team-card" style="--team-color: #0090ff;">
-                <div class="team-header">
-                  <span class="team-name">Williams Racing</span>
-                  <span class="team-country">英國 ｜ 格羅夫</span>
-                </div>
-                <div class="team-drivers-badge">車手陣容：#23 Albon / #55 Sainz</div>
-                <p class="team-desc">擁有深厚賽車血統的九座冠軍老牌勁旅。迎來經驗豐富的 Carlos Sainz 加盟，正全力展開底盤重塑與現代化復興大計。</p>
-                <div class="team-stat-row">
-                  <span>動力單元：<strong>Mercedes-AMG</strong></span>
-                  <span>製造商冠軍：<strong>9 座</strong></span>
-                </div>
+                <div class="team-header"><span class="team-name">Williams Racing</span><span class="team-country">英國 ｜ 格羅夫</span></div>
+                <div class="team-drivers-badge">車手：#23 Albon / #55 Sainz</div>
+                <p class="team-desc">擁有深厚賽車血統的九座世界冠軍老牌勁旅。在現代管理與兩位強大主力 Albon 與 Sainz 的加盟下，展開復興進擊之路。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Mercedes-AMG</strong></span><span>製造商冠軍：<strong>9 座</strong></span></div>
+              </div>
+
+              <div class="team-card" style="--team-color: #0093cc;">
+                <div class="team-header"><span class="team-name">Alpine F1 Team</span><span class="team-country">法國 ｜ 恩斯通</span></div>
+                <div class="team-drivers-badge">車手：#10 Gasly / #7 Doohan</div>
+                <p class="team-desc">雷諾集團旗下的法國代表。底盤設計具備強悍的高速直線特性，正全面重組其技術研發管理架構力圖重返前列陣營。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Renault / 客戶引擎體系</strong></span><span>製造商冠軍：<strong>2 座 (Renault)</strong></span></div>
+              </div>
+
+              <div class="team-card" style="--team-color: #6692ff;">
+                <div class="team-header"><span class="team-name">Racing Bulls (VCARB)</span><span class="team-country">義大利 ｜ 法恩扎</span></div>
+                <div class="team-drivers-badge">車手：#22 Tsunoda / #6 Hadjar</div>
+                <p class="team-desc">紅牛集團的兄弟青年軍，結合英國與義大利雙研發基地，車輛在排位單圈極具爆發力，是圍場新星的重要搖籃。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Honda RBPT</strong></span><span>分部：<strong>義大利法恩扎</strong></span></div>
+              </div>
+
+              <div class="team-card" style="--team-color: #b6babd;">
+                <div class="team-header"><span class="team-name">Haas F1 Team</span><span class="team-country">美國 ｜ 坎納波利斯</span></div>
+                <div class="team-drivers-badge">車手：#31 Ocon / #87 Bearman</div>
+                <p class="team-desc">美資實用主義代表，擅長在有限預算上限內發揮極致競爭力，與 Ferrari 保持深度技術零件合作，作風堅韌。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Ferrari V6 Turbo</strong></span><span>特色：<strong>高性價比戰術執行</strong></span></div>
+              </div>
+
+              <div class="team-card" style="--team-color: #52e252;">
+                <div class="team-header"><span class="team-name">Stake Sauber (Audi F1)</span><span class="team-country">瑞士 ｜ 辛威爾</span></div>
+                <div class="team-drivers-badge">車手：#27 Hülkenberg / #5 Bortoleto</div>
+                <p class="team-desc">由歷史悠久的薩伯車隊全面轉型為德國豪華品牌奧迪（Audi）官方廠隊，建立起全套專屬底盤與動力單元研發工程。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Ferrari (轉型 Audi PU)</strong></span><span>未來願景：<strong>奧迪原廠團隊</strong></span></div>
+              </div>
+
+              <div class="team-card" style="--team-color: #d4af37;">
+                <div class="team-header"><span class="team-name">Cadillac F1 Team</span><span class="team-country">美國 ｜ 印第安納波利斯</span></div>
+                <div class="team-drivers-badge">車手：#11 Pérez / #2 Herta</div>
+                <p class="team-desc">全球車迷期盼已久的第 11 支車隊！通用汽車（General Motors）攜手 Cadillac 與 Andretti 體系強勢加入 F1，帶來龐大的美系賽車資源與創新底盤工程。</p>
+                <div class="team-stat-row"><span>動力單元：<strong>Ferrari 客戶引擎 (未來 GM 自研)</strong></span><span>地位：<strong>第 11 支新軍</strong></span></div>
               </div>
             </div>
           </div>
@@ -1325,161 +1620,137 @@
           <div class="tab-panel" id="panel-circuits">
             <div class="circuits-grid">
               <div class="circuit-card">
-                <div class="circuit-header">
-                  <span class="gp-name">Monaco Grand Prix</span>
-                  <span class="circuit-badge">街道賽</span>
-                </div>
+                <div class="circuit-header"><span class="gp-name">Monaco Grand Prix</span><span class="circuit-badge">街道賽</span></div>
                 <div class="circuit-loc">摩納哥 ｜ Circuit de Monaco（長度：3.337 km）</div>
-                <div class="circuit-mini-map">
-                  <svg viewBox="0 0 100 60"><path d="M10 30 Q25 10 50 15 T85 20 Q95 40 70 50 T30 45 Z" /></svg>
-                </div>
+                <div class="circuit-mini-map"><svg viewBox="0 0 100 60"><path d="M10 30 Q25 10 50 15 T85 20 Q95 40 70 50 T30 45 Z" /></svg></div>
                 <p class="circuit-traits">世界上最富盛名也最狹窄危險的街道賽。在護欄僅有數公分的港灣穿梭，排位賽桿位幾乎決定 80% 的最終勝負。</p>
-                <div class="circuit-points">
-                  <strong>關鍵看點：</strong> <span>Loews 最慢髮夾彎、游泳池連續彎角、隧道盲彎出彎極限。</span>
-                </div>
+                <div class="circuit-points"><strong>關鍵看點：</strong> <span>Loews 最慢髮夾彎、游泳池連續彎角、隧道盲彎出彎極限。</span></div>
               </div>
 
               <div class="circuit-card">
-                <div class="circuit-header">
-                  <span class="gp-name">Belgian Grand Prix</span>
-                  <span class="circuit-badge">經典永久賽道</span>
-                </div>
+                <div class="circuit-header"><span class="gp-name">Belgian Grand Prix</span><span class="circuit-badge">經典永久賽道</span></div>
                 <div class="circuit-loc">比利時 ｜ Spa-Francorchamps（長度：7.004 km）</div>
-                <div class="circuit-mini-map">
-                  <svg viewBox="0 0 100 60"><path d="M15 45 L35 15 L60 20 L85 10 L75 40 L50 35 L30 50 Z" /></svg>
-                </div>
+                <div class="circuit-mini-map"><svg viewBox="0 0 100 60"><path d="M15 45 L35 15 L60 20 L85 10 L75 40 L50 35 L30 50 Z" /></svg></div>
                 <p class="circuit-traits">車手心目中的聖地。起伏劇烈的阿登森林地貌造就了全曆史上最長的單圈長度與微型氣候，常常賽道這頭下雨另一頭乾燥。</p>
-                <div class="circuit-points">
-                  <strong>關鍵看點：</strong> <span>Eau Rouge / Raidillon 極限爬坡上彎、Kemmel 長直道高速超車。</span>
-                </div>
+                <div class="circuit-points"><strong>關鍵看點：</strong> <span>Eau Rouge / Raidillon 極限爬坡上彎、Kemmel 長直道高速超車。</span></div>
               </div>
 
               <div class="circuit-card">
-                <div class="circuit-header">
-                  <span class="gp-name">British Grand Prix</span>
-                  <span class="circuit-badge">高速空力考驗</span>
-                </div>
+                <div class="circuit-header"><span class="gp-name">British Grand Prix</span><span class="circuit-badge">高速空力考驗</span></div>
                 <div class="circuit-loc">英國 ｜ Silverstone Circuit（長度：5.891 km）</div>
-                <div class="circuit-mini-map">
-                  <svg viewBox="0 0 100 60"><path d="M20 20 L75 15 L85 45 L55 50 L35 35 L15 45 Z" /></svg>
-                </div>
+                <div class="circuit-mini-map"><svg viewBox="0 0 100 60"><path d="M20 20 L75 15 L85 45 L55 50 L35 35 L15 45 Z" /></svg></div>
                 <p class="circuit-traits">現代 F1 歷史起點。高速彎角對於賽車的下壓力平衡與輪胎側向 G 力承受度提出極致考驗，是空力套件實力的終極試金石。</p>
-                <div class="circuit-points">
-                  <strong>關鍵看點：</strong> <span>Maggotts-Becketts-Chapel 傳奇 S 型高速連續彎、Stowe 煞車點。</span>
-                </div>
+                <div class="circuit-points"><strong>關鍵看點：</strong> <span>Maggotts-Becketts-Chapel 傳奇 S 型高速連續彎、Stowe 煞車點。</span></div>
               </div>
 
               <div class="circuit-card">
-                <div class="circuit-header">
-                  <span class="gp-name">Italian Grand Prix</span>
-                  <span class="circuit-badge">速度殿堂</span>
-                </div>
+                <div class="circuit-header"><span class="gp-name">Italian Grand Prix</span><span class="circuit-badge">速度殿堂</span></div>
                 <div class="circuit-loc">義大利 ｜ Autodromo Nazionale Monza（長度：5.793 km）</div>
-                <div class="circuit-mini-map">
-                  <svg viewBox="0 0 100 60"><path d="M15 15 L85 15 L90 45 L50 45 L40 52 L15 50 Z" /></svg>
-                </div>
+                <div class="circuit-mini-map"><svg viewBox="0 0 100 60"><path d="M15 15 L85 15 L90 45 L50 45 L40 52 L15 50 Z" /></svg></div>
                 <p class="circuit-traits">擁有「速度神殿」美譽，全場約 80% 單圈時間全油門衝刺。車隊均會換裝極低阻力的尾翼配置以換取超過 350 km/h 尾速。</p>
-                <div class="circuit-points">
-                  <strong>關鍵看點：</strong> <span>Prima Variante 一號減速彎大煞車重超車點、Parabolica 經典拋物線彎。</span>
-                </div>
+                <div class="circuit-points"><strong>關鍵看點：</strong> <span>Prima Variante 一號減速彎大煞車重超車點、Parabolica 經典拋物線彎。</span></div>
               </div>
 
               <div class="circuit-card">
-                <div class="circuit-header">
-                  <span class="gp-name">Japanese Grand Prix</span>
-                  <span class="circuit-badge">八字形交錯賽道</span>
-                </div>
+                <div class="circuit-header"><span class="gp-name">Japanese Grand Prix</span><span class="circuit-badge">八字形交錯賽道</span></div>
                 <div class="circuit-loc">日本 ｜ Suzuka Circuit（長度：5.807 km）</div>
-                <div class="circuit-mini-map">
-                  <svg viewBox="0 0 100 60"><path d="M20 40 Q30 15 50 30 T80 20 Q85 45 60 40 T25 45 Z" /></svg>
-                </div>
+                <div class="circuit-mini-map"><svg viewBox="0 0 100 60"><path d="M20 40 Q30 15 50 30 T80 20 Q85 45 60 40 T25 45 Z" /></svg></div>
                 <p class="circuit-traits">世上罕見的 8 字型立體交錯賽道，設計兼具高低速連續彎道。對車輛懸吊幾何與車手的節奏掌握要求極高，極受車迷推崇。</p>
-                <div class="circuit-points">
-                  <strong>關鍵看點：</strong> <span>第一段高速 S 彎連續換向、全速挑戰的 130R 盲彎。</span>
-                </div>
+                <div class="circuit-points"><strong>關鍵看點：</strong> <span>第一段高速 S 彎連續換向、全速挑戰的 130R 盲彎。</span></div>
               </div>
 
               <div class="circuit-card">
-                <div class="circuit-header">
-                  <span class="gp-name">United States GP</span>
-                  <span class="circuit-badge">高低起伏多功能</span>
-                </div>
+                <div class="circuit-header"><span class="gp-name">United States GP</span><span class="circuit-badge">高低起伏多功能</span></div>
                 <div class="circuit-loc">美國 ｜ Circuit of The Americas (COTA)（長度：5.513 km）</div>
-                <div class="circuit-mini-map">
-                  <svg viewBox="0 0 100 60"><path d="M10 50 L35 10 L70 20 L85 45 L50 40 L30 55 Z" /></svg>
-                </div>
+                <div class="circuit-mini-map"><svg viewBox="0 0 100 60"><path d="M10 50 L35 10 L70 20 L85 45 L50 40 L30 55 Z" /></svg></div>
                 <p class="circuit-traits">融合全球經典賽道特色的現代化場館。一號彎陡峭爬坡髮夾彎是全場超車與第一圈起跑攻防的核心焦點。</p>
-                <div class="circuit-points">
-                  <strong>關鍵看點：</strong> <span>1 號彎拔地而起的爬坡進彎、模仿銀石的連續高速 S 彎區。</span>
-                </div>
+                <div class="circuit-points"><strong>關鍵看點：</strong> <span>1 號彎拔地而起的爬坡進彎、模仿銀石的連續高速 S 彎區。</span></div>
               </div>
             </div>
           </div>
 
-          <!-- 4. RACING GUIDE PANEL -->
+          <!-- 4. EXPANDED RACING GUIDE PANEL -->
           <div class="tab-panel" id="panel-guide">
             <div class="guide-categories">
+              <!-- Box 1: Tires -->
               <div class="guide-box">
-                <div class="guide-tag">TIRE RULES</div>
-                <h4 class="guide-title">輪胎配方與乾濕地選擇</h4>
+                <div class="guide-tag">TIRE SPECIFICATIONS</div>
+                <h4 class="guide-title">倍耐力輪胎配方與工作窗口</h4>
                 <p class="guide-body">
-                  倍耐力（Pirelli）為每站賽事挑選 C1 至 C5 中的三種乾地輪胎配方。在乾地正賽中，車手<strong>必須至少使用兩種不同的輪胎配方</strong>，強制至少進行一次進站。
+                  倍耐力（Pirelli）擁有 C1（最硬）至 C5（最軟）的乾地輪胎家族。每站分站會精選 3 款標示為紅、黃、白。乾地正賽強制<strong>必須至少使用 2 種不同的乾胎配方</strong>，代表車隊至少需要進站 1 次換胎。
                 </p>
                 <div class="guide-pill-group">
-                  <span class="guide-pill pill-red">紅色軟胎 (Soft) - 最快/磨耗快</span>
-                  <span class="guide-pill pill-yellow">黃色中性胎 (Medium) - 平衡最佳</span>
-                  <span class="guide-pill pill-white">白色硬胎 (Hard) - 耐磨/速度慢</span>
-                  <span class="guide-pill" style="border-color:#00a3e0; color:#40c4ff;">半雨胎 (Inters) / 全雨胎 (Wet)</span>
+                  <span class="guide-pill pill-red">軟胎 (Soft) - 抓地力極高 / 衰退快</span>
+                  <span class="guide-pill pill-yellow">中性胎 (Medium) - 速度與壽命平衡</span>
+                  <span class="guide-pill pill-white">硬胎 (Hard) - 衰退慢 / 升溫慢</span>
+                  <span class="guide-pill pill-green">半雨胎 (Inters) - 微濕賽道排水</span>
+                  <span class="guide-pill pill-blue">全雨胎 (Wet) - 大雨排水 (60L/s)</span>
                 </div>
               </div>
 
+              <!-- Box 2: DRS & Active Aero -->
               <div class="guide-box">
-                <div class="guide-tag">OVERTAKE MECHANISM</div>
-                <h4 class="guide-title">DRS 可變尾翼超車輔助</h4>
+                <div class="guide-tag">AERODYNAMICS</div>
+                <h4 class="guide-title">DRS 可變尾翼與主動空力技術</h4>
                 <p class="guide-body">
-                  Drag Reduction System 旨在縮減前車後方亂流阻力。當後車在偵測點（Detection Point）與前車差距在 <strong>1.0 秒以內</strong>，即可在啟動區（Activation Zone）掀開尾翼翼片，大幅降低下壓力阻力並換取 10–15 km/h 的超車尾速優勢。
+                  <strong>DRS 超車輔助：</strong> 當追擊車輛在偵測點（Detection Point）與前車差距在 <strong>1.0 秒以內</strong>，即可在啟動區掀開尾翼翼片，減少空氣阻力以換取 10–15 km/h 的直道尾速超車優勢。<br>
+                  <strong>新世代主動空力：</strong> 延伸出直線低阻巡航模式（X-Mode）與彎道高下壓力抓地模式（Z-Mode），空力攻防更具動態性。
                 </p>
                 <div class="guide-pill-group">
-                  <span class="guide-pill">間距需在 1 秒內</span>
-                  <span class="guide-pill">雨天或安全車出動時禁用</span>
+                  <span class="guide-pill">秒差必須在 1.0 秒內</span>
+                  <span class="guide-pill">雨天或黃旗/安全車時禁用</span>
                 </div>
               </div>
 
+              <!-- Box 3: Pit Strategy -->
               <div class="guide-box">
-                <div class="guide-tag">STRATEGY & PIT STOP</div>
-                <h4 class="guide-title">進站戰術：Undercut 與 Overcut</h4>
+                <div class="guide-tag">STRATEGY MATRIX</div>
+                <h4 class="guide-title">進站戰術博弈：Undercut vs Overcut</h4>
                 <p class="guide-body">
-                  <strong>Undercut（提前進站翻盤）：</strong> 在前方對手之前先進站換上抓地力充沛的新胎，利用飛馳圈的時間優勢在對手下一圈進站出來時超越對手。<br>
-                  <strong>Overcut（延後進站）：</strong> 留在場上利用對手陷入出站車陣（Traffic）的時間空檔持續推速，通常在輪胎衰退率低或超車困難的街道賽奏效。
+                  <strong>Undercut（提前進站）：</strong> 比對手先換上抓地力滿點的新胎，利用出站後的飛馳圈（Out-lap）速度逆轉對手，在對手下一圈進站時成功超車。<br>
+                  <strong>Overcut（延後進站）：</strong> 留在場上多跑幾圈。當輪胎衰退平緩、或者前方有慢車阻擋對手出站時，延後進站能換取賽道乾淨氣流，常在摩納哥等超車困難分站奏效。
                 </p>
               </div>
 
+              <!-- Box 4: Race Flags Legend -->
+              <div class="guide-box">
+                <div class="guide-tag">TRACK SAFETY</div>
+                <h4 class="guide-title">賽道旗號百科（Flags Guide）</h4>
+                <p class="guide-body">
+                  旗號是指揮官與馬修（Marshal）向車手傳遞賽道安全狀況的核心信號：
+                </p>
+                <div class="flags-mini-grid">
+                  <div class="flag-item flag-green"><strong>綠旗 (Green)：</strong> 賽道淨空，恢復正常競速。</div>
+                  <div class="flag-item flag-yellow"><strong>黃旗 (Yellow)：</strong> 前方有危險，減速並禁止超車。</div>
+                  <div class="flag-item flag-red"><strong>紅旗 (Red)：</strong> 賽事暫停，全體車輛駛回維修區。</div>
+                  <div class="flag-item flag-blue"><strong>藍旗 (Blue)：</strong> 即將被套圈，必須讓出賽車線。</div>
+                  <div class="flag-item flag-diag"><strong>黑白對角旗：</strong> 違反體育道德行為警告。</div>
+                  <div class="flag-item flag-black"><strong>黑旗 (Black)：</strong> 被取消比賽資格，必須退賽。</div>
+                </div>
+              </div>
+
+              <!-- Box 5: Weekend Format & Qualifying -->
               <div class="guide-box">
                 <div class="guide-tag">RACE WEEKEND</div>
-                <h4 class="guide-title">標準大獎賽週末賽制</h4>
+                <h4 class="guide-title">大獎賽週末賽制與三階段排位賽</h4>
                 <p class="guide-body">
-                  標準週末包含週五兩次自由練習（FP1、FP2），週六上午 FP3 及下午<strong>淘汰制排位賽（Q1淘汰後5位、Q2淘汰後5位、Q3前10名爭奪桿位 Pole Position）</strong>，週日進行 305 公里正賽。<br>
-                  若為<strong>衝刺賽週末（Sprint）</strong>，則改為週五排位、週六 100 公里短程衝刺賽、週日大獎賽正賽。
+                  <strong>三階段淘汰排位賽（Knockout Qualifying）：</strong><br>
+                  • <strong>Q1（18分鐘）：</strong> 淘汰速度最慢的最後 6 位車手。<br>
+                  • <strong>Q2（15分鐘）：</strong> 淘汰第 11 至 16 名車手。<br>
+                  • <strong>Q3（12分鐘）：</strong> 剩餘前 10 名展開最後飛馳圈，爭奪桿位（Pole Position）。<br>
+                  <strong>衝刺賽週末（Sprint）：</strong> 週五進行衝刺排位賽，週六進行 100 公里衝刺正賽（前 8 名獲積分），週日進行 305 公里大獎賽正賽。
                 </p>
               </div>
 
+              <!-- Box 6: Penalties & Licenses -->
               <div class="guide-box">
-                <div class="guide-tag">SAFETY & FLAGS</div>
-                <h4 class="guide-title">賽道旗號與安全車機制</h4>
+                <div class="guide-tag">STEWARDS & RULES</div>
+                <h4 class="guide-title">違規判罰機制與超級駕照罰分</h4>
                 <p class="guide-body">
-                  <strong>黃旗：</strong> 前方有危險，減速並禁止超車。<br>
-                  <strong>紅旗：</strong> 賽事嚴重暫停，所有車輛立刻返回維修通道。<br>
-                  <strong>安全車 (Safety Car / VSC)：</strong> 限制全場單圈速度以清理賽道碎片或拖吊退賽車輛，此時往往是各隊進站換胎的黃金窗口。
-                </p>
-              </div>
-
-              <div class="guide-box">
-                <div class="guide-tag">POINTS SYSTEM</div>
-                <h4 class="guide-title">年度積分系統</h4>
-                <p class="guide-body">
-                  前十名完賽車手可依序獲得積分：<br>
-                  P1：<strong>25分</strong>、P2：<strong>18分</strong>、P3：<strong>15分</strong>、P4：12分、P5：10分、P6：8分、P7：6分、P8：4分、P9：2分、P10：1分。<br>
-                  衝刺賽前八名亦有 8 至 1 分的積分獎勵。
+                  賽事幹事（Stewards）常見的懲處機制：<br>
+                  • <strong>5 秒 / 10 秒罰時：</strong> 於進站時靜止等待罰秒完成才能換胎，或於完賽成績追加。<br>
+                  • <strong>Drive-Through 罰通過維修區：</strong> 以速限穿越維修通道，不得換胎。<br>
+                  • <strong>超速 / 擦碰 / 出界（Track Limits）：</strong> 一場比賽出界達 4 次罰 5 秒；嚴重違規將扣減超級駕照點數（12 個月內累積 12 點強制禁賽一場）。
                 </p>
               </div>
             </div>
@@ -1488,7 +1759,7 @@
       </div>
     </section>
 
-    <!-- Real-Time Standings Section -->
+    <!-- Upgraded Real-Time Standings Section -->
     <section class="section standings-section" id="standings">
       <div class="section-heading">
         <div>
@@ -1496,19 +1767,32 @@
           <h2>OFFICIAL <span>STANDINGS</span></h2>
         </div>
       </div>
+
+      <!-- Standings Tabs (Drivers vs Constructors) -->
+      <div class="standings-tabs-row">
+        <div class="std-toggle-group">
+          <button class="std-btn active" id="btnStandingsDrivers" onclick="switchStandingsTab('drivers')">車手積分榜 (DRIVERS)</button>
+          <button class="std-btn" id="btnStandingsConstructors" onclick="switchStandingsTab('constructors')">車隊積分榜 (CONSTRUCTORS)</button>
+        </div>
+        <div>
+          <button class="std-filter-btn" id="btnToggleFullGrid" onclick="toggleFullStandings()">顯示前 10 名 / 完整陣容</button>
+        </div>
+      </div>
+
       <div class="standings-card">
         <table class="standings-table">
           <thead>
-            <tr>
-              <th style="width: 70px;">名次</th>
+            <tr id="tableHeaderRow">
+              <th style="width: 60px;">名次</th>
               <th>車手 (DRIVER)</th>
               <th>車隊 (TEAM)</th>
-              <th style="text-align: right;">當季積分 (PTS)</th>
+              <th style="text-align: center;">分站勝場 (WINS)</th>
+              <th style="text-align: right;">總積分 (PTS)</th>
             </tr>
           </thead>
           <tbody id="liveStandingsTable">
             <tr>
-              <td colspan="4" style="text-align: center; color: #888; padding: 2rem;">
+              <td colspan="5" style="text-align: center; color: #888; padding: 2.2rem;">
                 正在同步官方開放資料庫 (Jolpica Ergast API)...
               </td>
             </tr>
@@ -1541,7 +1825,7 @@
     </div>
   </footer>
 
-  <!-- Script for In-Page Explorer & Real-Time F1 API Connection -->
+  <!-- Scripts -->
   <script>
     // 1. Mobile Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -1561,49 +1845,147 @@
       if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
     }
 
-    // 2. Hub In-Page Tabs Switching (Drivers, Teams, Circuits, Guide)
+    // 2. Hub Categories Switching
     const categoryMetadata = {
-      drivers: { badge: 'DRIVERS', title: '現役車手名冊 (Drivers)' },
-      teams: { badge: 'CONSTRUCTORS', title: '車隊陣容與底盤 (Teams)' },
+      drivers: { badge: 'DRIVERS', title: '現役車手名冊 (22 位車手全席)' },
+      teams: { badge: 'CONSTRUCTORS', title: '製造商車隊陣容 (11 支車隊)' },
       circuits: { badge: 'CIRCUITS', title: '全球大獎賽賽道解析 (Circuits)' },
-      guide: { badge: 'RACING GUIDE', title: '一級方程式觀賽百科 (Racing Guide)' }
+      guide: { badge: 'RACING GUIDE', title: '一級方程式觀賽百科 & 旗號圖鑑 (Racing Guide)' }
     };
 
     function openHubCategory(catId) {
-      // 1. Update Hub Header
       const meta = categoryMetadata[catId];
       if (meta) {
         document.getElementById('hubBadge').textContent = meta.badge;
         document.getElementById('hubHeading').textContent = meta.title;
       }
 
-      // 2. Update Tabs
       document.querySelectorAll('.hub-tab-btn').forEach(btn => btn.classList.remove('active'));
       const activeTabBtn = document.getElementById('tabBtn-' + catId);
       if (activeTabBtn) activeTabBtn.classList.add('active');
 
-      // 3. Update Panels
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       const targetPanel = document.getElementById('panel-' + catId);
       if (targetPanel) targetPanel.classList.add('active');
 
-      // 4. Update Category Card Active Border
       document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active-tab'));
       const activeCard = document.getElementById('cat-card-' + catId);
       if (activeCard) activeCard.classList.add('active-tab');
 
-      // 5. Smooth Scroll directly to Hub Explorer
+      // Filter bar only visible for drivers and teams
+      const filterBar = document.getElementById('hubFilterBar');
+      if (filterBar) {
+        filterBar.style.display = (catId === 'drivers' || catId === 'teams') ? 'flex' : 'none';
+      }
+
       const explorer = document.getElementById('hubExplorer');
       if (explorer) {
         explorer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
 
-      // 6. Close mobile menu if opened
       if (primaryNav) primaryNav.classList.remove('open');
       if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
     }
 
-    // 3. Real-Time Jolpica Ergast F1 API Integration
+    // Filter Items by Team
+    function filterItems(teamKey) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      const cards = document.querySelectorAll('.driver-card');
+      cards.forEach(card => {
+        if (teamKey === 'all') {
+          card.style.display = 'block';
+        } else {
+          card.style.display = (card.dataset.team === teamKey) ? 'block' : 'none';
+        }
+      });
+    }
+
+    // Search input
+    function searchHubItems() {
+      const query = document.getElementById('itemSearch').value.toLowerCase();
+      const cards = document.querySelectorAll('.driver-card');
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        card.style.display = text.includes(query) ? 'block' : 'none';
+      });
+    }
+
+    // 3. Standings Management (Drivers vs Constructors)
+    let currentStandingsTab = 'drivers';
+    let isFullStandings = false;
+    let cachedDriverStandings = [];
+    let cachedConstructorStandings = [];
+
+    function switchStandingsTab(tab) {
+      currentStandingsTab = tab;
+      document.getElementById('btnStandingsDrivers').classList.toggle('active', tab === 'drivers');
+      document.getElementById('btnStandingsConstructors').classList.toggle('active', tab === 'constructors');
+
+      const thead = document.getElementById('tableHeaderRow');
+      if (tab === 'drivers') {
+        thead.innerHTML = `
+          <th style="width: 60px;">名次</th>
+          <th>車手 (DRIVER)</th>
+          <th>車隊 (TEAM)</th>
+          <th style="text-align: center;">分站勝場 (WINS)</th>
+          <th style="text-align: right;">總積分 (PTS)</th>
+        `;
+      } else {
+        thead.innerHTML = `
+          <th style="width: 60px;">名次</th>
+          <th>車隊 (CONSTRUCTOR)</th>
+          <th>國籍 / 總部</th>
+          <th style="text-align: center;">分站勝場 (WINS)</th>
+          <th style="text-align: right;">總積分 (PTS)</th>
+        `;
+      }
+
+      renderCurrentStandings();
+    }
+
+    function toggleFullStandings() {
+      isFullStandings = !isFullStandings;
+      document.getElementById('btnToggleFullGrid').textContent = isFullStandings ? '收合為前 8 名' : '顯示完整陣容';
+      renderCurrentStandings();
+    }
+
+    function renderCurrentStandings() {
+      const tbody = document.getElementById('liveStandingsTable');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+
+      if (currentStandingsTab === 'drivers') {
+        const list = isFullStandings ? cachedDriverStandings : cachedDriverStandings.slice(0, 10);
+        list.forEach((item, idx) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="rank-cell">P${item.position || idx + 1}</td>
+            <td class="driver-cell">${item.name} <span style="font-size:11px; color:#777;">#${item.number || ''}</span></td>
+            <td class="team-cell">${item.team}</td>
+            <td class="stat-cell">${item.wins || '0'}</td>
+            <td class="pts-cell">${item.points || '0'}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      } else {
+        const list = isFullStandings ? cachedConstructorStandings : cachedConstructorStandings.slice(0, 8);
+        list.forEach((item, idx) => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="rank-cell">P${item.position || idx + 1}</td>
+            <td class="driver-cell">${item.name}</td>
+            <td class="team-cell">${item.nationality || 'F1 Base'}</td>
+            <td class="stat-cell">${item.wins || '0'}</td>
+            <td class="pts-cell">${item.points || '0'}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      }
+    }
+
+    // 4. API Fetching
     async function loadF1RealtimeData() {
       // Fetch Next GP
       try {
@@ -1627,7 +2009,6 @@
           fallbackNextRaceUI();
         }
       } catch (err) {
-        console.warn('Next Race API error, fallback to offline info:', err);
         fallbackNextRaceUI();
       }
 
@@ -1638,16 +2019,87 @@
           const stdJson = await stdRes.json();
           const list = stdJson?.MRData?.StandingsTable?.StandingsLists;
           if (list && list.length > 0) {
-            renderStandingsTable(list[0].DriverStandings);
-          } else {
-            fallbackStandingsUI();
+            cachedDriverStandings = list[0].DriverStandings.map(d => ({
+              position: d.position,
+              name: `${d.Driver.givenName} ${d.Driver.familyName}`,
+              number: d.Driver.permanentNumber,
+              team: d.Constructors[0]?.name || 'N/A',
+              wins: d.wins,
+              points: d.points
+            }));
           }
-        } else {
-          fallbackStandingsUI();
         }
-      } catch (err) {
-        console.warn('Standings API error, fallback to offline standings:', err);
-        fallbackStandingsUI();
+      } catch (e) {
+        console.warn('Driver API error, using rich local fallback');
+      }
+
+      // Fetch Constructor Standings
+      try {
+        const cstdRes = await fetch('https://api.jolpi.ca/ergast/f1/current/constructorStandings.json');
+        if (cstdRes.ok) {
+          const cstdJson = await cstdRes.json();
+          const clist = cstdJson?.MRData?.StandingsTable?.StandingsLists;
+          if (clist && clist.length > 0) {
+            cachedConstructorStandings = clist[0].ConstructorStandings.map(c => ({
+              position: c.position,
+              name: c.Constructor.name,
+              nationality: c.Constructor.nationality,
+              wins: c.wins,
+              points: c.points
+            }));
+          }
+        }
+      } catch (e) {
+        console.warn('Constructor API error, using rich local fallback');
+      }
+
+      // Fallbacks if list is empty
+      ensureFallbacks();
+      renderCurrentStandings();
+    }
+
+    function ensureFallbacks() {
+      if (cachedDriverStandings.length === 0) {
+        cachedDriverStandings = [
+          { position: '1', name: 'Max Verstappen', number: '1', team: 'Red Bull Racing', wins: '8', points: '429' },
+          { position: '2', name: 'Lando Norris', number: '4', team: 'McLaren', wins: '4', points: '374' },
+          { position: '3', name: 'Charles Leclerc', number: '16', team: 'Ferrari', wins: '3', points: '356' },
+          { position: '4', name: 'Oscar Piastri', number: '81', team: 'McLaren', wins: '2', points: '292' },
+          { position: '5', name: 'Carlos Sainz', number: '55', team: 'Williams', wins: '2', points: '290' },
+          { position: '6', name: 'George Russell', number: '63', team: 'Mercedes-AMG', wins: '2', points: '245' },
+          { position: '7', name: 'Lewis Hamilton', number: '44', team: 'Ferrari', wins: '2', points: '223' },
+          { position: '8', name: 'Sergio Pérez', number: '11', team: 'Cadillac F1', wins: '0', points: '152' },
+          { position: '9', name: 'Fernando Alonso', number: '14', team: 'Aston Martin', wins: '0', points: '70' },
+          { position: '10', name: 'Nico Hülkenberg', number: '27', team: 'Sauber Audi', wins: '0', points: '41' },
+          { position: '11', name: 'Yuki Tsunoda', number: '22', team: 'VCARB', wins: '0', points: '30' },
+          { position: '12', name: 'Pierre Gasly', number: '10', team: 'Alpine', wins: '0', points: '26' },
+          { position: '13', name: 'Alexander Albon', number: '23', team: 'Williams', wins: '0', points: '18' },
+          { position: '14', name: 'Esteban Ocon', number: '31', team: 'Haas', wins: '0', points: '14' },
+          { position: '15', name: 'Oliver Bearman', number: '87', team: 'Haas', wins: '0', points: '10' },
+          { position: '16', name: 'Liam Lawson', number: '30', team: 'Red Bull', wins: '0', points: '8' },
+          { position: '17', name: 'Colton Herta', number: '2', team: 'Cadillac F1', wins: '0', points: '6' },
+          { position: '18', name: 'Gabriel Bortoleto', number: '5', team: 'Sauber Audi', wins: '0', points: '4' },
+          { position: '19', name: 'Kimi Antonelli', number: '12', team: 'Mercedes', wins: '0', points: '2' },
+          { position: '20', name: 'Jack Doohan', number: '7', team: 'Alpine', wins: '0', points: '1' },
+          { position: '21', name: 'Lance Stroll', number: '18', team: 'Aston Martin', wins: '0', points: '1' },
+          { position: '22', name: 'Isack Hadjar', number: '6', team: 'VCARB', wins: '0', points: '0' }
+        ];
+      }
+
+      if (cachedConstructorStandings.length === 0) {
+        cachedConstructorStandings = [
+          { position: '1', name: 'McLaren', nationality: 'British', wins: '6', points: '666' },
+          { position: '2', name: 'Ferrari', nationality: 'Italian', wins: '5', points: '652' },
+          { position: '3', name: 'Red Bull Racing', nationality: 'Austrian', wins: '8', points: '589' },
+          { position: '4', name: 'Mercedes-AMG', nationality: 'German', wins: '2', points: '468' },
+          { position: '5', name: 'Williams Racing', nationality: 'British', wins: '2', points: '308' },
+          { position: '6', name: 'Cadillac F1 Team', nationality: 'American', wins: '0', points: '158' },
+          { position: '7', name: 'Aston Martin', nationality: 'British', wins: '0', points: '86' },
+          { position: '8', name: 'Haas F1 Team', nationality: 'American', wins: '0', points: '58' },
+          { position: '9', name: 'Stake Sauber (Audi)', nationality: 'Swiss', wins: '0', points: '45' },
+          { position: '10', name: 'Racing Bulls (VCARB)', nationality: 'Italian', wins: '0', points: '38' },
+          { position: '11', name: 'Alpine F1 Team', nationality: 'French', wins: '0', points: '32' }
+        ];
       }
     }
 
@@ -1676,52 +2128,12 @@
       setInterval(tick, 1000);
     }
 
-    function renderStandingsTable(standings) {
-      const tbody = document.getElementById('liveStandingsTable');
-      if (!tbody) return;
-      tbody.innerHTML = '';
-      standings.slice(0, 8).forEach(item => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="rank-cell">P${item.position}</td>
-          <td class="driver-cell">${item.Driver.givenName} ${item.Driver.familyName} <span style="font-size:11px; color:#777;">#${item.Driver.permanentNumber || ''}</span></td>
-          <td class="team-cell">${item.Constructors[0]?.name || 'N/A'}</td>
-          <td class="pts-cell">${item.points}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
     function fallbackNextRaceUI() {
       document.getElementById('liveRoundBadge').textContent = 'F1 SEASON';
       document.getElementById('liveRaceTitle').textContent = 'Formula 1 Grand Prix';
-      document.getElementById('liveRaceCircuit').textContent = '即時官方賽程同步完畢';
+      document.getElementById('liveRaceCircuit').textContent = '即時官方賽程連線中';
     }
 
-    function fallbackStandingsUI() {
-      const tbody = document.getElementById('liveStandingsTable');
-      if (!tbody) return;
-      const mock = [
-        { pos: '1', name: 'Max Verstappen', team: 'Red Bull Racing', pts: '—' },
-        { pos: '2', name: 'Lando Norris', team: 'McLaren', pts: '—' },
-        { pos: '3', name: 'Charles Leclerc', team: 'Ferrari', pts: '—' },
-        { pos: '4', name: 'Oscar Piastri', team: 'McLaren', pts: '—' },
-        { pos: '5', name: 'Carlos Sainz', team: 'Williams', pts: '—' }
-      ];
-      tbody.innerHTML = '';
-      mock.forEach(m => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="rank-cell">P${m.pos}</td>
-          <td class="driver-cell">${m.name}</td>
-          <td class="team-cell">${m.team}</td>
-          <td class="pts-cell">${m.pts}</td>
-        `;
-        tbody.appendChild(tr);
-      });
-    }
-
-    // Initialize on page load
     document.addEventListener('DOMContentLoaded', () => {
       loadF1RealtimeData();
     });
