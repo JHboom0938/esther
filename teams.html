@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="F1 Insider｜車隊陣容">
+  <title>車隊陣容｜F1 Insider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .page-container { max-width: 1440px; margin: auto; padding: 60px 9.5% 100px; }
+    .page-header { margin-bottom: 45px; border-bottom: 1px solid #333; padding-bottom: 25px; }
+    .page-kicker { color: var(--red); font: 700 12px var(--font-display); letter-spacing: 2px; margin-bottom: 10px; }
+    .page-title { font: 900 clamp(42px, 6vw, 76px)/1 var(--font-display); }
+    .page-title span { color: var(--red); }
+    .page-subtitle { color: #999; font-size: 14px; margin-top: 14px; max-width: 650px; line-height: 1.8; }
+    .teams-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    .team-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 24px; border-left: 4px solid var(--team-color, var(--red)); }
+    .team-card:hover { transform: translateY(-3px); border-color: #666; transition: all 0.25s; }
+    .team-name { font-size: 22px; font-weight: 700; }
+    .team-loc { font-size: 12px; color: #888; margin-top: 4px; font-weight: 600; }
+    .team-drivers { display: inline-block; background: #111; border: 1px solid #333; padding: 4px 10px; font-size: 12px; color: #eee; margin: 12px 0; border-radius: 2px; }
+    .team-desc { font-size: 13px; color: #aaa; line-height: 1.8; margin-bottom: 14px; }
+    .team-meta-row { display: flex; justify-content: space-between; font-size: 12px; color: #777; border-top: 1px solid #282828; padding-top: 10px; }
+    .team-meta-row strong { color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="top-line"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">F1</span>
+        <span class="brand-name">INSIDER<span class="brand-period">.</span></span>
+      </a>
+      <nav class="primary-nav">
+        <a class="nav-link" href="../index.html">首頁 <span>HOME</span></a>
+        <a class="nav-link" href="drivers.html">車手 <span>DRIVERS</span></a>
+        <a class="nav-link active" href="teams.html">車隊 <span>TEAMS</span></a>
+        <a class="nav-link" href="circuits.html">賽道 <span>CIRCUITS</span></a>
+        <a class="nav-link" href="racing-guide.html">賽事指南 <span>GUIDE</span></a>
+      </nav>
+      <a class="header-cta" href="../index.html">回到首頁 <span>↗</span></a>
+    </div>
+  </header>
+  <main class="page-container">
+    <div class="page-header">
+      <p class="page-kicker">F1 INSIDER / CONSTRUCTORS</p>
+      <h1 class="page-title">製造商車隊陣容 <span>TEAMS</span></h1>
+      <p class="page-subtitle">探索圍場 10 支頂尖製造商團隊的工程技術、引擎動力單元與隊史榮譽。</p>
+    </div>
+    <div class="teams-grid">
+      <div class="team-card" style="--team-color: #e80020;">
+        <h2 class="team-name">Scuderia Ferrari</h2>
+        <div class="team-loc">義大利 ｜ 馬拉內羅</div>
+        <div class="team-drivers">車手陣容：#16 Leclerc / #44 Hamilton</div>
+        <p class="team-desc">F1 史上唯一參加過所有賽季的傳奇車隊。象徵著競速的靈魂與激情，擁有全世界最熱血的 Tifosi 車迷支持，2025 年迎來漢米爾頓組建夢幻陣容。</p>
+        <div class="team-meta-row"><span>動力單元：<strong>Ferrari V6 Turbo</strong></span><span>製造商冠軍：<strong>16 座</strong></span></div>
+      </div>
+      <div class="team-card" style="--team-color: #ff8000;">
+        <h2 class="team-name">McLaren F1 Team</h2>
+        <div class="team-loc">英國 ｜ 沃金</div>
+        <div class="team-drivers">車手陣容：#4 Norris / #81 Piastri</div>
+        <p class="team-desc">歷史悠久的經典英國豪門車隊。近年憑藉激進且精準的空力研發步調重返巔峰，賽車在高速彎角與長距離輪胎保護性名列前茅。</p>
+        <div class="team-meta-row"><span>動力單元：<strong>Mercedes-AMG</strong></span><span>製造商冠軍：<strong>8 座</strong></span></div>
+      </div>
+      <div class="team-card" style="--team-color: #3671c6;">
+        <h2 class="team-name">Red Bull Racing</h2>
+        <div class="team-loc">奧地利 ｜ 米爾頓凱恩斯</div>
+        <div class="team-drivers">車手陣容：#1 Verstappen 等</div>
+        <p class="team-desc">以打破常規、激進技術調校與閃電進站策略聞名。在傳奇空力大師 Adrian Newey 的奠基下，創下多次跨賽季統治級連勝紀錄。</p>
+        <div class="team-meta-row"><span>動力單元：<strong>Honda RBPT</strong></span><span>製造商冠軍：<strong>6 座</strong></span></div>
+      </div>
+      <div class="team-card" style="--team-color: #27f4d2;">
+        <h2 class="team-name">Mercedes-AMG PETRONAS</h2>
+        <div class="team-loc">德國 ｜ 布拉克利</div>
+        <div class="team-drivers">車手陣容：#63 Russell / Antonelli</div>
+        <p class="team-desc">渦輪混合動力時代創造連奪 8 座車隊總冠軍空前霸業的德國銀箭。具備深厚且龐大的工程技術儲備，致力打造新世代競爭力。</p>
+        <div class="team-meta-row"><span>動力單元：<strong>Mercedes-AMG</strong></span><span>製造商冠軍：<strong>8 座</strong></span></div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="brand footer-brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a>
+      <p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p>
+    </div>
+    <div class="footer-bottom"><span>© 2026 F1 INSIDER. FOR EDUCATIONAL PURPOSES.</span><span>BUILT FOR THE LOVE OF RACING.</span></div>
+  </footer>
+</body>
+</html>

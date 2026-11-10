@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="F1 Insider｜賽事指南">
+  <title>觀賽指南｜F1 Insider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .page-container { max-width: 1440px; margin: auto; padding: 60px 9.5% 100px; }
+    .page-header { margin-bottom: 45px; border-bottom: 1px solid #333; padding-bottom: 25px; }
+    .page-kicker { color: var(--red); font: 700 12px var(--font-display); letter-spacing: 2px; margin-bottom: 10px; }
+    .page-title { font: 900 clamp(42px, 6vw, 76px)/1 var(--font-display); }
+    .page-title span { color: var(--red); }
+    .page-subtitle { color: #999; font-size: 14px; margin-top: 14px; max-width: 650px; line-height: 1.8; }
+    .guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .guide-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 24px; }
+    .guide-tag { color: var(--red); font: 700 11px var(--font-display); letter-spacing: 1.5px; margin-bottom: 6px; }
+    .guide-heading { font-size: 20px; font-weight: 700; margin-bottom: 12px; color: #fff; }
+    .guide-text { font-size: 13px; color: #aaa; line-height: 1.9; }
+  </style>
+</head>
+<body>
+  <div class="top-line"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">F1</span>
+        <span class="brand-name">INSIDER<span class="brand-period">.</span></span>
+      </a>
+      <nav class="primary-nav">
+        <a class="nav-link" href="../index.html">首頁 <span>HOME</span></a>
+        <a class="nav-link" href="drivers.html">車手 <span>DRIVERS</span></a>
+        <a class="nav-link" href="teams.html">車隊 <span>TEAMS</span></a>
+        <a class="nav-link" href="circuits.html">賽道 <span>CIRCUITS</span></a>
+        <a class="nav-link active" href="racing-guide.html">賽事指南 <span>GUIDE</span></a>
+      </nav>
+      <a class="header-cta" href="../index.html">回到首頁 <span>↗</span></a>
+    </div>
+  </header>
+  <main class="page-container">
+    <div class="page-header">
+      <p class="page-kicker">F1 INSIDER / GUIDE</p>
+      <h1 class="page-title">一級方程式觀賽百科 <span>RACING GUIDE</span></h1>
+      <p class="page-subtitle">從零開始掌握 Formula 1 必修規則：輪胎配方、DRS 運作原理、進站戰術與積分制度。</p>
+    </div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <div class="guide-tag">TIRES & PIT STOPS</div>
+        <h2 class="guide-heading">輪胎配方與乾濕地選擇</h2>
+        <p class="guide-text">每場大獎賽倍耐力提供三款乾地胎：軟胎（紅標，最快但磨損快）、中性胎（黃標，速度平衡）、硬胎（白標，最耐磨）。乾地正賽強制必須至少使用兩種不同的輪胎配方，確保至少一次進站換胎戰術。</p>
+      </div>
+      <div class="guide-card">
+        <div class="guide-tag">OVERTAKE WEAPON</div>
+        <h2 class="guide-heading">DRS 可變尾翼超車機制</h2>
+        <p class="guide-text">當後車在偵測點與前車秒差小於 1.0 秒以內，進入啟動區即可按鍵開啟尾翼翼片，降低風阻並換取 10–15 km/h 的直道尾速超車優勢。</p>
+      </div>
+      <div class="guide-card">
+        <div class="guide-tag">STRATEGY</div>
+        <h2 class="guide-heading">Undercut 與 Overcut 戰術</h2>
+        <p class="guide-text">Undercut 是在對手先進站前換上新胎利用飛馳圈超車；Overcut 則是留在場上多跑數圈，避開出站車陣擁堵或利用對手輪胎升溫期的戰術翻盤。</p>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="brand footer-brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a>
+      <p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p>
+    </div>
+    <div class="footer-bottom"><span>© 2026 F1 INSIDER. FOR EDUCATIONAL PURPOSES.</span><span>BUILT FOR THE LOVE OF RACING.</span></div>
+  </footer>
+</body>
+</html>

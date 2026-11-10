@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="F1 Insider｜全球大獎賽賽道">
+  <title>賽道解析｜F1 Insider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .page-container { max-width: 1440px; margin: auto; padding: 60px 9.5% 100px; }
+    .page-header { margin-bottom: 45px; border-bottom: 1px solid #333; padding-bottom: 25px; }
+    .page-kicker { color: var(--red); font: 700 12px var(--font-display); letter-spacing: 2px; margin-bottom: 10px; }
+    .page-title { font: 900 clamp(42px, 6vw, 76px)/1 var(--font-display); }
+    .page-title span { color: var(--red); }
+    .page-subtitle { color: #999; font-size: 14px; margin-top: 14px; max-width: 650px; line-height: 1.8; }
+    .circuits-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+    .circuit-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 24px; display: flex; flex-direction: column; }
+    .circuit-card:hover { transform: translateY(-4px); border-color: #666; transition: all 0.25s; }
+    .gp-name { font-size: 21px; font-weight: 700; color: #fff; }
+    .circuit-badge { font: 700 11px var(--font-display); color: var(--red); border: 1px solid var(--red); padding: 2px 6px; border-radius: 2px; }
+    .circuit-loc { font-size: 12px; color: #888; margin: 6px 0 14px; }
+    .circuit-traits { font-size: 13px; color: #aaa; line-height: 1.8; margin-bottom: 14px; flex-grow: 1; }
+    .circuit-points { background: #141414; padding: 12px; font-size: 12px; border-left: 2px solid var(--red); color: #999; }
+    .circuit-points span { color: #fff; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="top-line"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">F1</span>
+        <span class="brand-name">INSIDER<span class="brand-period">.</span></span>
+      </a>
+      <nav class="primary-nav">
+        <a class="nav-link" href="../index.html">首頁 <span>HOME</span></a>
+        <a class="nav-link" href="drivers.html">車手 <span>DRIVERS</span></a>
+        <a class="nav-link" href="teams.html">車隊 <span>TEAMS</span></a>
+        <a class="nav-link active" href="circuits.html">賽道 <span>CIRCUITS</span></a>
+        <a class="nav-link" href="racing-guide.html">賽事指南 <span>GUIDE</span></a>
+      </nav>
+      <a class="header-cta" href="../index.html">回到首頁 <span>↗</span></a>
+    </div>
+  </header>
+  <main class="page-container">
+    <div class="page-header">
+      <p class="page-kicker">F1 INSIDER / CIRCUITS</p>
+      <h1 class="page-title">大獎賽經典賽道 <span>CIRCUITS</span></h1>
+      <p class="page-subtitle">深入全球標誌性分站，解析單圈長度、攻防超車熱點與賽車空力調校考驗。</p>
+    </div>
+    <div class="circuits-grid">
+      <div class="circuit-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 class="gp-name">Monaco GP</h2>
+          <span class="circuit-badge">街道賽</span>
+        </div>
+        <div class="circuit-loc">摩納哥 ｜ Circuit de Monaco（長度：3.337 km）</div>
+        <p class="circuit-traits">世界上最富盛名也最狹窄危險的街道賽。在護欄僅有數公分的港灣穿梭，排位賽桿位幾乎決定 80% 的最終勝負。</p>
+        <div class="circuit-points"><strong>關鍵看點：</strong> <span>Loews 最慢髮夾彎、游泳池連續彎角、隧道盲彎出彎極限。</span></div>
+      </div>
+      <div class="circuit-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 class="gp-name">Belgian GP</h2>
+          <span class="circuit-badge">經典永久賽道</span>
+        </div>
+        <div class="circuit-loc">比利時 ｜ Spa-Francorchamps（長度：7.004 km）</div>
+        <p class="circuit-traits">車手心目中的聖地。起伏劇烈的阿登森林地貌造就了全曆史上最長的單圈長度與微型氣候，常常賽道這頭下雨另一頭乾燥。</p>
+        <div class="circuit-points"><strong>關鍵看點：</strong> <span>Eau Rouge / Raidillon 極限爬坡上彎、Kemmel 長直道高速超車。</span></div>
+      </div>
+      <div class="circuit-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <h2 class="gp-name">United States GP</h2>
+          <span class="circuit-badge">高低起伏多功能</span>
+        </div>
+        <div class="circuit-loc">美國 ｜ Circuit of The Americas (COTA)（長度：5.513 km）</div>
+        <p class="circuit-traits">融合全球經典賽道特色的現代化場館。一號彎陡峭爬坡髮夾彎是全場超車與第一圈起跑攻防的核心焦點。</p>
+        <div class="circuit-points"><strong>關鍵看點：</strong> <span>1 號彎拔地而起的爬坡進彎、模仿銀石的連續高速 S 彎區。</span></div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="brand footer-brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a>
+      <p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p>
+    </div>
+    <div class="footer-bottom"><span>© 2026 F1 INSIDER. FOR EDUCATIONAL PURPOSES.</span><span>BUILT FOR THE LOVE OF RACING.</span></div>
+  </footer>
+</body>
+</html>

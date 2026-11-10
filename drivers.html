@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="F1 Insider｜現役車手">
+  <title>車手名冊｜F1 Insider</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .page-container { max-width: 1440px; margin: auto; padding: 60px 9.5% 100px; }
+    .page-header { margin-bottom: 45px; border-bottom: 1px solid #333; padding-bottom: 25px; }
+    .page-kicker { color: var(--red); font: 700 12px var(--font-display); letter-spacing: 2px; margin-bottom: 10px; }
+    .page-title { font: 900 clamp(42px, 6vw, 76px)/1 var(--font-display); }
+    .page-title span { color: var(--red); }
+    .page-subtitle { color: #999; font-size: 14px; margin-top: 14px; max-width: 650px; line-height: 1.8; }
+    .drivers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+    .driver-card { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 24px; position: relative; overflow: hidden; border-top: 4px solid var(--team-color, var(--red)); }
+    .driver-card:hover { transform: translateY(-4px); border-color: #666; transition: all 0.25s; }
+    .driver-ghost { position: absolute; right: 10px; top: -15px; font: 900 90px/1 var(--font-display); color: rgba(255,255,255,.05); pointer-events: none; }
+    .driver-name { font-size: 22px; font-weight: 700; }
+    .driver-num { color: var(--red); font: 800 18px var(--font-display); }
+    .driver-meta { font-size: 12px; color: #aaa; margin: 8px 0 14px; }
+    .driver-meta span { color: #fff; font-weight: 600; }
+    .driver-bio { font-size: 13px; color: #aaa; line-height: 1.8; margin-bottom: 16px; }
+    .driver-highlights { border-top: 1px solid #282828; padding-top: 12px; font-size: 12px; color: #ccc; }
+    .driver-highlights strong { color: var(--red-bright); }
+  </style>
+</head>
+<body>
+  <div class="top-line"></div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">F1</span>
+        <span class="brand-name">INSIDER<span class="brand-period">.</span></span>
+      </a>
+      <nav class="primary-nav">
+        <a class="nav-link" href="../index.html">首頁 <span>HOME</span></a>
+        <a class="nav-link active" href="drivers.html">車手 <span>DRIVERS</span></a>
+        <a class="nav-link" href="teams.html">車隊 <span>TEAMS</span></a>
+        <a class="nav-link" href="circuits.html">賽道 <span>CIRCUITS</span></a>
+        <a class="nav-link" href="racing-guide.html">賽事指南 <span>GUIDE</span></a>
+      </nav>
+      <a class="header-cta" href="../index.html">回到首頁 <span>↗</span></a>
+    </div>
+  </header>
+  <main class="page-container">
+    <div class="page-header">
+      <p class="page-kicker">F1 INSIDER / DRIVERS DIRECTORY</p>
+      <h1 class="page-title">現役頂尖車手 <span>DRIVERS</span></h1>
+      <p class="page-subtitle">認識站上 Formula 1 圍場頂端的 20 位主角，掌握車手國籍、歷史號碼、所屬車隊與生涯高光戰績。</p>
+    </div>
+    <div class="drivers-grid">
+      <div class="driver-card" style="--team-color: #3671c6;">
+        <span class="driver-ghost">1</span>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <h2 class="driver-name">Max Verstappen</h2>
+          <span class="driver-num">#1</span>
+        </div>
+        <div class="driver-meta">國籍：<span>荷蘭 (NED)</span> ｜ 車隊：<span>Red Bull Racing</span></div>
+        <p class="driver-bio">當代極具統治力的賽車手，以無與倫比的控車穩定度與絕佳輪胎管理能力聞名，多次刷新單季分站勝場歷史紀錄。</p>
+        <div class="driver-highlights"><strong>生涯亮點：</strong> 多屆世界一級方程式年度總冠軍、史上最年輕分站冠軍得主。</div>
+      </div>
+      <div class="driver-card" style="--team-color: #e80020;">
+        <span class="driver-ghost">44</span>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <h2 class="driver-name">Lewis Hamilton</h2>
+          <span class="driver-num">#44</span>
+        </div>
+        <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>Ferrari</span></div>
+        <p class="driver-bio">一級方程式歷史勝場與桿位紀錄保持人。2025 年震撼轉投躍馬法拉利，追求個人生涯傳奇的第八座世界冠軍頭銜。</p>
+        <div class="driver-highlights"><strong>生涯亮點：</strong> 7 屆世界冠軍、100+ 場大獎賽優勝、100+ 次排位賽桿位。</div>
+      </div>
+      <div class="driver-card" style="--team-color: #e80020;">
+        <span class="driver-ghost">16</span>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <h2 class="driver-name">Charles Leclerc</h2>
+          <span class="driver-num">#16</span>
+        </div>
+        <div class="driver-meta">國籍：<span>摩納哥 (MON)</span> ｜ 車隊：<span>Ferrari</span></div>
+        <p class="driver-bio">法拉利青訓出身的純粹競速天才，在單圈排位賽具備極致的爆發力與車輛極限駕馭能力，2024 年奪下夢寐以求的主場摩納哥冠軍。</p>
+        <div class="driver-highlights"><strong>生涯亮點：</strong> 摩納哥大獎賽冠軍、法拉利旗幟性當家王牌車手。</div>
+      </div>
+      <div class="driver-card" style="--team-color: #ff8000;">
+        <span class="driver-ghost">4</span>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <h2 class="driver-name">Lando Norris</h2>
+          <span class="driver-num">#4</span>
+        </div>
+        <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>McLaren</span></div>
+        <p class="driver-bio">麥拉倫車隊重返巔峰的核心人物。風格冷靜兼具攻擊性，在多變氣候與長距離正賽節奏中表現極為搶眼。</p>
+        <div class="driver-highlights"><strong>生涯亮點：</strong> 2024 邁阿密大獎賽首勝、年度車手總冠軍有力競爭者。</div>
+      </div>
+      <div class="driver-card" style="--team-color: #ff8000;">
+        <span class="driver-ghost">81</span>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <h2 class="driver-name">Oscar Piastri</h2>
+          <span class="driver-num">#81</span>
+        </div>
+        <div class="driver-meta">國籍：<span>澳洲 (AUS)</span> ｜ 車隊：<span>McLaren</span></div>
+        <p class="driver-bio">近年晉升 F1 最受矚目的新星，橫掃青年方程式冠軍後登陸 F1，以超乎年齡的心理素質與超車精準度震驚圍場。</p>
+        <div class="driver-highlights"><strong>生涯亮點：</strong> 2024 匈牙利大獎賽優勝、新人年奪得衝刺賽勝利。</div>
+      </div>
+      <div class="driver-card" style="--team-color: #27f4d2;">
+        <span class="driver-ghost">63</span>
+        <div style="display:flex; justify-content:space-between; align-items:baseline;">
+          <h2 class="driver-name">George Russell</h2>
+          <span class="driver-num">#63</span>
+        </div>
+        <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>Mercedes-AMG</span></div>
+        <p class="driver-bio">梅賽德斯車隊中流砥柱，技術細膩且具備極佳工程反饋素養，被譽為新世代最具領袖風範的英國車手代表。</p>
+        <div class="driver-highlights"><strong>生涯亮點：</strong> 2022 巴西大獎賽冠軍、梅賽德斯當家主力。</div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="brand footer-brand" href="../index.html"><span class="brand-mark">F1</span><span class="brand-name">INSIDER<span class="brand-period">.</span></span></a>
+      <p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p>
+    </div>
+    <div class="footer-bottom"><span>© 2026 F1 INSIDER. FOR EDUCATIONAL PURPOSES.</span><span>BUILT FOR THE LOVE OF RACING.</span></div>
+  </footer>
+</body>
+</html>

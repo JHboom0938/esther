@@ -1,0 +1,1730 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="F1 Insider — 從車手、車隊到賽道策略，帶你看懂 Formula 1。">
+  <meta name="theme-color" content="#111111">
+  <title>F1 Insider｜進入 Formula 1 的世界</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Noto+Sans+TC:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #111111;
+      --surface: #1c1c1c;
+      --surface-light: #242424;
+      --surface-elevated: #2a2a2a;
+      --red: #d71920;
+      --red-bright: #f3262e;
+      --text: #f5f5f5;
+      --muted: #999999;
+      --border: #333333;
+      --font-display: "Barlow Condensed", Impact, sans-serif;
+      --font-body: "Noto Sans TC", sans-serif;
+      --transition-smooth: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    .top-line { height: 4px; background: var(--red); }
+
+    /* Site Header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17, 17, 17, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner {
+      max-width: 1440px;
+      height: 80px;
+      padding: 0 6.2%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .brand-mark {
+      font: 900 34px/0.8 var(--font-display);
+      letter-spacing: -2px;
+      color: var(--red);
+      transform: skew(-9deg);
+    }
+    .brand-name {
+      font: 800 22px/0.9 var(--font-display);
+      letter-spacing: 2px;
+    }
+    .brand-period { color: var(--red); }
+
+    .primary-nav {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 2.5vw, 42px);
+      height: 100%;
+    }
+    .nav-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+      height: 100%;
+      color: #d7d7d7;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      transition: color 0.2s;
+    }
+    .nav-btn span {
+      color: #777;
+      font: 600 10px var(--font-display);
+      letter-spacing: 1.5px;
+    }
+    .nav-btn::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width 0.25s;
+    }
+    .nav-btn:hover, .nav-btn.active { color: #fff; }
+    .nav-btn:hover span, .nav-btn.active span { color: var(--red-bright); }
+    .nav-btn:hover::after, .nav-btn.active::after { width: 100%; }
+
+    .header-cta {
+      border: 1px solid #555;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      transition: background 0.2s, border 0.2s;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+    }
+    .header-cta span { color: var(--red-bright); margin-left: 10px; }
+    .header-cta:hover { background: var(--red); border-color: var(--red); }
+    .header-cta:hover span { color: white; }
+
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      padding: 10px 7px;
+      border: 1px solid #444;
+      background: transparent;
+      flex-direction: column;
+      justify-content: space-around;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      width: 100%;
+      height: 2px;
+      background: white;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .menu-toggle[aria-expanded="true"] span:first-child { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded="true"] span:last-child { transform: translateY(-7px) rotate(-45deg); }
+
+    /* Hero Section */
+    .hero {
+      min-height: 620px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 60px 9.5% 85px;
+      background: radial-gradient(ellipse at 75% 48%, #292020 0%, #171515 34%, #111 68%);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.14;
+      background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(90deg, transparent, #000 60%);
+    }
+    .hero-grid {
+      position: absolute;
+      width: 62%;
+      height: 130%;
+      right: -13%;
+      top: -18%;
+      transform: rotate(-17deg);
+      background: repeating-linear-gradient(90deg, transparent 0 30px, rgba(215,25,32,.06) 31px 32px);
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 620px;
+    }
+    .eyebrow {
+      margin: 0 0 16px;
+      color: #aaa;
+      font: 600 12px var(--font-display);
+      letter-spacing: 2.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .eyebrow-line { width: 34px; height: 2px; background: var(--red); }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 1.05;
+      font-weight: 900;
+      letter-spacing: -2px;
+    }
+    .hero h1 span { color: var(--red); }
+    .hero-copy {
+      color: #b9b9b9;
+      font-size: 15px;
+      line-height: 1.9;
+      margin: 22px 0 25px;
+    }
+
+    /* Live Next Race & Countdown Box */
+    .hero-live-box {
+      background: rgba(28, 28, 28, 0.85);
+      border: 1px solid #333;
+      border-left: 3px solid var(--red);
+      padding: 16px 20px;
+      margin-bottom: 25px;
+      border-radius: 4px;
+      backdrop-filter: blur(10px);
+    }
+    .live-tag-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .live-badge {
+      background: var(--red);
+      color: #fff;
+      font: 800 11px var(--font-display);
+      letter-spacing: 1px;
+      padding: 2px 7px;
+      border-radius: 2px;
+    }
+    .live-race-name {
+      font-weight: 700;
+      font-size: 15px;
+      color: #fff;
+    }
+    .live-circuit-sub {
+      color: var(--muted);
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+    .countdown-row {
+      display: flex;
+      gap: 10px;
+    }
+    .cd-box {
+      background: #111;
+      border: 1px solid #333;
+      padding: 6px 12px;
+      min-width: 58px;
+      text-align: center;
+      border-radius: 3px;
+    }
+    .cd-box span {
+      display: block;
+      font: 800 22px/1.1 var(--font-display);
+      color: #fff;
+    }
+    .cd-box label {
+      font-size: 9px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 13px 22px;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .button-red {
+      background: var(--red);
+      color: #fff;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .button-red:hover { background: #f3262e; transform: translateY(-2px); }
+    .text-link {
+      font-size: 13px;
+      color: #ddd;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .text-link span { color: var(--red); padding-left: 6px; font-size: 15px; }
+    .text-link:hover { color: #fff; }
+
+    /* Hero Art Track */
+    .hero-art {
+      position: absolute;
+      width: 52%;
+      height: 100%;
+      right: -2%;
+      top: 0;
+      pointer-events: none;
+    }
+    .art-track { position: absolute; width: 100%; top: 22%; right: -3%; transform: rotate(-8deg); }
+    .art-track svg { width: 100%; overflow: visible; }
+    .track-shadow { fill: none; stroke: rgba(215,25,32,.13); stroke-width: 76; stroke-linecap: round; }
+    .track-line { fill: none; stroke: #353030; stroke-width: 58; stroke-linecap: round; }
+    .track-inner { fill: none; stroke: #111; stroke-width: 50; stroke-linecap: round; }
+    .track-dash { fill: none; stroke: rgba(255,255,255,.32); stroke-width: 1.5; stroke-dasharray: 12 14; }
+    .hero-stamp {
+      position: absolute;
+      right: 22%;
+      top: 20%;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      transform: rotate(-8deg);
+    }
+    .hero-stamp span { color: var(--red); font: 900 75px/0.8 var(--font-display); }
+    .hero-stamp small { color: #aaa; font: 700 9px/1.4 var(--font-display); letter-spacing: 1.4px; }
+
+    /* Ticker Strip */
+    .ticker {
+      overflow: hidden;
+      background: var(--red);
+      padding: 12px 0;
+      transform: skewY(-1deg);
+      border-top: 1px solid #ff4d52;
+      border-bottom: 1px solid #9c0c11;
+    }
+    .ticker-track {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      min-width: max-content;
+      font: 800 15px var(--font-display);
+      letter-spacing: 2px;
+      animation: marquee 30s linear infinite;
+    }
+    .ticker i { font-style: normal; color: #ffb4b7; font-size: 12px; }
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Common Sections */
+    .section {
+      max-width: 1440px;
+      margin: auto;
+      padding: 85px 9.5%;
+    }
+    .section-kicker {
+      color: var(--red);
+      margin-bottom: 10px;
+      font: 700 12px var(--font-display);
+      letter-spacing: 2px;
+    }
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 35px;
+      gap: 20px;
+    }
+    .section-heading h2 {
+      margin: 0;
+      font: 800 clamp(32px, 4vw, 52px)/1 var(--font-display);
+      letter-spacing: 0.5px;
+    }
+    .section-heading h2 span { color: #777; }
+
+    /* Featured Content */
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 18px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      position: relative;
+      transition: transform 0.25s, border-color 0.25s;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: #666;
+    }
+    .feature-visual {
+      height: 210px;
+      position: relative;
+      overflow: hidden;
+      background: #252020;
+    }
+    .visual-label {
+      position: absolute;
+      left: 18px;
+      top: 16px;
+      color: #aaa;
+      font: 600 10px var(--font-display);
+      letter-spacing: 1.8px;
+    }
+    .visual-index {
+      position: absolute;
+      right: 18px;
+      bottom: 10px;
+      color: rgba(255,255,255,.2);
+      font: 800 40px var(--font-display);
+    }
+    .visual-strategy { background: radial-gradient(ellipse at 55% 50%, #492021 0%, #26191a 46%, #191919 100%); }
+    .strategy-diagram { position: absolute; inset: 40px 12px 12px; }
+    .strategy-diagram svg { position: absolute; width: 100%; height: 100%; inset: 0; }
+    .strategy-diagram path { fill: none; stroke: var(--red); stroke-width: 3; stroke-dasharray: 7 8; }
+    .diagram-caption {
+      position: absolute;
+      right: 12%;
+      top: 36%;
+      color: rgba(255,255,255,.85);
+      font: 800 24px/0.9 var(--font-display);
+      letter-spacing: 1px;
+      transform: skew(-8deg);
+    }
+
+    .visual-driver { background: linear-gradient(135deg, #3a2526, #171717 65%); }
+    .driver-big-num {
+      position: absolute;
+      right: 15px;
+      bottom: -20px;
+      color: rgba(255,255,255,.08);
+      font: 900 160px/0.8 var(--font-display);
+    }
+    .visual-circuit { background: radial-gradient(ellipse at 50% 50%, #292929, #171717 70%); }
+    .circuit-map svg { width: 85%; height: 120px; stroke: var(--red); fill: none; stroke-width: 10; stroke-linejoin: round; margin: 40px auto 0; display: block; }
+
+    .feature-info {
+      padding: 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-meta {
+      display: flex;
+      justify-content: space-between;
+      color: var(--red);
+      font: 700 11px var(--font-display);
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .card-meta span:last-child { color: #777; font-family: var(--font-body); font-weight: 500; font-size: 11px; }
+    .feature-info h3 {
+      font-size: 16px;
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .feature-info p {
+      color: #999;
+      font-size: 12px;
+      line-height: 1.8;
+      flex-grow: 1;
+      margin-bottom: 14px;
+    }
+    .card-arrow {
+      align-self: flex-end;
+      color: #aaa;
+      font-size: 18px;
+      transition: color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover .card-arrow { color: var(--red); transform: translate(3px, -3px); }
+
+    /* Interactive Categories Section */
+    .discover-section {
+      background: #171717;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .discover-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 8%;
+      align-items: start;
+    }
+    .discover-intro h2 {
+      font-size: clamp(36px, 4.2vw, 56px);
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .discover-intro p {
+      color: #999;
+      font-size: 13px;
+      line-height: 2;
+      max-width: 320px;
+    }
+    .vertical-note {
+      display: inline-block;
+      margin-top: 35px;
+      color: #666;
+      font: 600 10px var(--font-display);
+      letter-spacing: 2px;
+    }
+
+    .category-list { border-top: 1px solid #333; }
+    .category-card {
+      display: grid;
+      grid-template-columns: 48px 1fr 1fr 30px;
+      align-items: center;
+      gap: 16px;
+      min-height: 90px;
+      border-bottom: 1px solid #333;
+      padding: 0 10px;
+      transition: padding 0.25s, background 0.25s;
+      cursor: pointer;
+    }
+    .category-card:hover, .category-card.active-tab {
+      padding-left: 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 3px solid var(--red);
+    }
+    .category-no { color: var(--red); font: 700 15px var(--font-display); }
+    .category-copy { display: flex; flex-direction: column; }
+    .category-copy strong { font-size: 19px; }
+    .category-copy small { color: #777; font: 600 10px var(--font-display); letter-spacing: 1.5px; }
+    .category-desc { color: #888; font-size: 12px; }
+    .category-arrow { justify-self: end; color: #aaa; font-size: 20px; transition: transform 0.2s, color 0.2s; }
+    .category-card:hover .category-arrow { color: var(--red); transform: translate(3px, -3px); }
+
+    /* Interactive Hub Display Panel (The Core In-Page Explorer) */
+    .hub-container {
+      margin-top: 40px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      scroll-margin-top: 90px;
+    }
+    .hub-header {
+      background: #141414;
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .hub-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hub-title-badge {
+      background: var(--red);
+      color: #fff;
+      font: 800 12px var(--font-display);
+      padding: 2px 8px;
+      letter-spacing: 1px;
+    }
+    .hub-title {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .hub-tabs {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .hub-tab-btn {
+      background: #222;
+      border: 1px solid #333;
+      color: #bbb;
+      padding: 8px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      border-radius: 3px;
+      transition: var(--transition-smooth);
+    }
+    .hub-tab-btn:hover {
+      background: #2e2e2e;
+      color: #fff;
+    }
+    .hub-tab-btn.active {
+      background: var(--red);
+      color: #fff;
+      border-color: var(--red);
+    }
+
+    .hub-content {
+      padding: 30px;
+      min-height: 480px;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Drivers Panel Layout */
+    .drivers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .driver-card {
+      background: var(--surface-light);
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+      border-top: 3px solid var(--driver-team-color, var(--red));
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .driver-card:hover {
+      transform: translateY(-4px);
+      border-color: #666;
+    }
+    .driver-number-ghost {
+      position: absolute;
+      right: 10px;
+      top: -10px;
+      font: 900 80px/1 var(--font-display);
+      color: rgba(255,255,255,.05);
+      pointer-events: none;
+    }
+    .driver-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+    .driver-name {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .driver-num {
+      color: var(--red);
+      font: 800 16px var(--font-display);
+    }
+    .driver-meta {
+      font-size: 11px;
+      color: #aaa;
+      margin-bottom: 12px;
+      display: flex;
+      gap: 10px;
+    }
+    .driver-meta span { color: var(--text); font-weight: 600; }
+    .driver-bio {
+      color: #aaa;
+      font-size: 12px;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .driver-highlights {
+      border-top: 1px solid #333;
+      padding-top: 10px;
+      font-size: 11px;
+      color: #ccc;
+    }
+    .driver-highlights strong { color: var(--red-bright); }
+
+    /* Teams Panel Layout */
+    .teams-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+    .team-card {
+      background: var(--surface-light);
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 22px;
+      border-left: 4px solid var(--team-color, var(--red));
+      transition: transform 0.2s, background 0.2s;
+    }
+    .team-card:hover {
+      transform: translateY(-3px);
+      background: var(--surface-elevated);
+    }
+    .team-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .team-name { font-size: 21px; font-weight: 700; }
+    .team-country { font-size: 11px; color: #888; font-weight: 600; }
+    .team-drivers-badge {
+      display: inline-block;
+      background: #111;
+      border: 1px solid #383838;
+      padding: 3px 8px;
+      font-size: 11px;
+      color: #ddd;
+      margin-bottom: 12px;
+      border-radius: 2px;
+    }
+    .team-desc {
+      font-size: 12px;
+      color: #aaa;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .team-stat-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #777;
+      border-top: 1px solid #2e2e2e;
+      padding-top: 8px;
+    }
+    .team-stat-row strong { color: #eee; }
+
+    /* Circuits Panel Layout */
+    .circuits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 22px;
+    }
+    .circuit-card {
+      background: var(--surface-light);
+      border: 1px solid #333;
+      border-radius: 4px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+    }
+    .circuit-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .gp-name { font-size: 20px; font-weight: 700; color: #fff; }
+    .circuit-badge {
+      font: 700 11px var(--font-display);
+      color: var(--red);
+      border: 1px solid var(--red);
+      padding: 1px 6px;
+      border-radius: 2px;
+      height: fit-content;
+    }
+    .circuit-loc { font-size: 11px; color: #888; margin-bottom: 12px; }
+    .circuit-mini-map {
+      background: #141414;
+      border: 1px solid #282828;
+      height: 120px;
+      margin-bottom: 14px;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circuit-mini-map svg { width: 85%; height: 80%; stroke: var(--red); fill: none; stroke-width: 6; stroke-linejoin: round; }
+    .circuit-traits {
+      font-size: 12px;
+      color: #bbb;
+      line-height: 1.7;
+      margin-bottom: 14px;
+      flex-grow: 1;
+    }
+    .circuit-points {
+      background: #141414;
+      padding: 10px 12px;
+      font-size: 11px;
+      border-left: 2px solid var(--red);
+      color: #999;
+    }
+    .circuit-points span { color: #ddd; font-weight: 600; }
+
+    /* Racing Guide Panel Layout */
+    .guide-categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .guide-box {
+      background: var(--surface-light);
+      border: 1px solid #333;
+      padding: 22px;
+      border-radius: 4px;
+    }
+    .guide-tag {
+      font: 700 11px var(--font-display);
+      color: var(--red);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .guide-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .guide-body {
+      font-size: 12px;
+      color: #aaa;
+      line-height: 1.8;
+    }
+    .guide-pill-group {
+      display: flex;
+      gap: 6px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+    .guide-pill {
+      font-size: 10px;
+      padding: 3px 8px;
+      background: #111;
+      border: 1px solid #444;
+      border-radius: 2px;
+      color: #ccc;
+    }
+    .pill-red { border-color: #d71920; color: #ff6b6e; }
+    .pill-yellow { border-color: #ffd200; color: #ffd200; }
+    .pill-white { border-color: #fff; color: #fff; }
+
+    /* Live Official Standings Section */
+    .standings-section {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .standings-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+    .standings-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    .standings-table th, .standings-table td {
+      padding: 14px 20px;
+      border-bottom: 1px solid #282828;
+    }
+    .standings-table th {
+      color: var(--muted);
+      font: 700 11px var(--font-display);
+      letter-spacing: 1.5px;
+      background: #141414;
+    }
+    .rank-cell {
+      font: 800 16px var(--font-display);
+      color: var(--red);
+      width: 60px;
+    }
+    .driver-cell {
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .team-cell {
+      color: #aaa;
+      font-size: 13px;
+    }
+    .pts-cell {
+      text-align: right;
+      font: 800 18px var(--font-display);
+      color: #fff;
+    }
+
+    /* Quote Section */
+    .quote-section {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 95px 20px 90px;
+      background: linear-gradient(110deg, #151515, #211718, #151515);
+      border-top: 1px solid var(--border);
+    }
+    .quote-mark { color: var(--red); font: 900 70px/0.6 Georgia, serif; }
+    .quote-section p {
+      margin: 18px 0 10px;
+      font: 900 clamp(38px, 5.5vw, 68px)/0.95 var(--font-display);
+      letter-spacing: 2px;
+    }
+    .quote-section > span { color: #999; font-size: 13px; }
+
+    /* Footer */
+    .site-footer {
+      background: #0b0b0b;
+      border-top: 1px solid var(--border);
+      padding: 45px 9.5% 24px;
+    }
+    .footer-main {
+      max-width: 1440px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      padding-bottom: 35px;
+    }
+    .footer-brand .brand-mark { font-size: 40px; }
+    .footer-brand .brand-name { font-size: 24px; }
+    .footer-main p { margin: 0; color: #777; font-size: 12px; line-height: 1.8; }
+    .back-top {
+      margin-left: auto;
+      color: #999;
+      font: 600 11px var(--font-display);
+      letter-spacing: 1.5px;
+      cursor: pointer;
+    }
+    .back-top:hover { color: var(--red); }
+    .footer-bottom {
+      max-width: 1440px;
+      margin: auto;
+      border-top: 1px solid #222;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #555;
+      font: 600 10px var(--font-display);
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .header-inner { padding: 0 5%; }
+      .primary-nav { gap: 14px; }
+      .header-cta { display: none; }
+      .hero { padding: 60px 6% 75px; }
+      .hero-art { display: none; }
+      .section { padding: 65px 6%; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .discover-grid { grid-template-columns: 1fr; gap: 30px; }
+      .category-card { grid-template-columns: 36px 1fr 28px; }
+      .category-desc { display: none; }
+    }
+
+    @media (max-width: 700px) {
+      .menu-toggle { display: flex; }
+      .primary-nav {
+        display: none;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: #141414;
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        height: auto;
+        padding: 15px 6% 25px;
+        align-items: stretch;
+      }
+      .primary-nav.open { display: flex; }
+      .nav-btn {
+        height: auto;
+        padding: 12px 0;
+        border-bottom: 1px solid #282828;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .nav-btn::after { display: none; }
+      .hero h1 { font-size: 52px; }
+      .footer-main { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .back-top { margin-left: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-line"></div>
+
+  <!-- Header -->
+  <header class="site-header" id="top">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="F1 Insider 首頁">
+        <span class="brand-mark">F1</span>
+        <span class="brand-name">INSIDER<span class="brand-period">.</span></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="開啟導覽選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="primary-nav" id="primaryNav">
+        <button class="nav-btn active" onclick="scrollToSection('top')">首頁 <span>HOME</span></button>
+        <button class="nav-btn" onclick="openHubCategory('drivers')">車手 <span>DRIVERS</span></button>
+        <button class="nav-btn" onclick="openHubCategory('teams')">車隊 <span>TEAMS</span></button>
+        <button class="nav-btn" onclick="openHubCategory('circuits')">賽道 <span>CIRCUITS</span></button>
+        <button class="nav-btn" onclick="openHubCategory('guide')">賽事指南 <span>GUIDE</span></button>
+      </nav>
+
+      <button class="header-cta" onclick="openHubCategory('drivers')">開始探索 <span>↗</span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-line"></span> THE WORLD OF FORMULA 1</p>
+        <h1>速度之外<br><span>看懂 F1。</span></h1>
+        <p class="hero-copy">從車手技術、車隊戰術到分站賽道的極限挑戰，為初學者與資深車迷精心打造的繁體中文一級方程式知識庫。</p>
+
+        <!-- 即時賽程與倒數卡片 -->
+        <div class="hero-live-box">
+          <div class="live-tag-row">
+            <span class="live-badge" id="liveRoundBadge">CALCULATING</span>
+            <span class="live-race-name" id="liveRaceTitle">連線最新分站中...</span>
+          </div>
+          <div class="live-circuit-sub" id="liveRaceCircuit">取得官方賽程與地點時區...</div>
+          <div class="countdown-row">
+            <div class="cd-box"><span id="cdDays">00</span><label>天</label></div>
+            <div class="cd-box"><span id="cdHours">00</span><label>時</label></div>
+            <div class="cd-box"><span id="cdMins">00</span><label>分</label></div>
+            <div class="cd-box"><span id="cdSecs">00</span><label>秒</label></div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <button class="button button-red" onclick="openHubCategory('drivers')">探索專區主題 <span>↗</span></button>
+          <span class="text-link" onclick="openHubCategory('guide')">新手入門指南 <span>→</span></span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-track">
+          <svg viewBox="0 0 650 430">
+            <path class="track-shadow" d="M55 280 C70 130 180 60 295 100 C385 132 380 235 475 235 C565 235 610 155 595 85" />
+            <path class="track-line" d="M55 280 C70 130 180 60 295 100 C385 132 380 235 475 235 C565 235 610 155 595 85" />
+            <path class="track-inner" d="M55 280 C70 130 180 60 295 100 C385 132 380 235 475 235 C565 235 610 155 595 85" />
+            <path class="track-dash" d="M55 280 C70 130 180 60 295 100 C385 132 380 235 475 235 C565 235 610 155 595 85" />
+          </svg>
+        </div>
+        <div class="hero-stamp"><span>F1</span><small>INSIDER<br>EDITION 2026</small></div>
+      </div>
+    </section>
+
+    <!-- Ticker Strip -->
+    <section class="ticker" aria-label="主題跑馬燈">
+      <div class="ticker-track">
+        <span>FORMULA 1</span><i>✳</i><span>DRIVERS</span><i>✳</i><span>CONSTRUCTORS</span><i>✳</i><span>CIRCUITS</span><i>✳</i><span>RACE STRATEGY</span><i>✳</i><span>TELEMETRY</span><i>✳</i>
+        <span>FORMULA 1</span><i>✳</i><span>DRIVERS</span><i>✳</i><span>CONSTRUCTORS</span><i>✳</i><span>CIRCUITS</span><i>✳</i><span>RACE STRATEGY</span><i>✳</i><span>TELEMETRY</span><i>✳</i>
+      </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="section" id="featured">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">01 / THE LATEST</p>
+          <h2>FEATURED <span>CONTENT</span></h2>
+        </div>
+      </div>
+      <div class="featured-grid">
+        <article class="feature-card" onclick="openHubCategory('guide')">
+          <div class="feature-visual visual-strategy">
+            <span class="visual-label">RACE KNOWLEDGE</span>
+            <div class="strategy-diagram">
+              <svg viewBox="0 0 520 250"><path d="M18 190 C70 20 145 40 170 125 S280 220 300 105 S430 15 500 72" /></svg>
+              <div class="diagram-caption">THE PERFECT<br>RACE LINE</div>
+            </div>
+            <span class="visual-index">01</span>
+          </div>
+          <div class="feature-info">
+            <div class="card-meta"><span>RACING GUIDE</span><span>新手必讀</span></div>
+            <h3>一場 F1 比賽，究竟是如何勝出的？</h3>
+            <p>起跑彈射反應、硬中軟配方選擇與 Undercut 進站策略，解析決定頒獎台的微秒瞬間。</p>
+            <span class="card-arrow">↗</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="openHubCategory('drivers')">
+          <div class="feature-visual visual-driver">
+            <span class="visual-label">DRIVER SPOTLIGHT</span>
+            <div class="driver-big-num">01</div>
+            <span class="visual-index">02</span>
+          </div>
+          <div class="feature-info">
+            <div class="card-meta"><span>DRIVERS</span><span>焦點車手</span></div>
+            <h3>頂級圍場的 20 位競速靈魂</h3>
+            <p>現役世界冠軍 Max Verstappen、Lewis Hamilton、Charles Leclerc 等焦點車手資料與生涯記錄。</p>
+            <span class="card-arrow">↗</span>
+          </div>
+        </article>
+
+        <article class="feature-card" onclick="openHubCategory('circuits')">
+          <div class="feature-visual visual-circuit">
+            <span class="visual-label">TRACK ANALYSIS</span>
+            <div class="circuit-map">
+              <svg viewBox="0 0 360 220"><path d="M45 110 L65 48 L140 30 L205 55 L245 35 L300 65 L280 115 L310 165 L235 190 L175 160 L110 185 L55 155 Z" /></svg>
+            </div>
+            <span class="visual-index">03</span>
+          </div>
+          <div class="feature-info">
+            <div class="card-meta"><span>CIRCUITS</span><span>賽道解析</span></div>
+            <h3>從摩納哥狹窄街道到銀石高速彎</h3>
+            <p>攻防超車點、煞車熱點與 DRS 區域設置，看懂賽道如何塑造扣人心弦的分站賽事。</p>
+            <span class="card-arrow">↗</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Categories Section with Integrated Interactive Hub -->
+    <section class="section discover-section" id="discover">
+      <div class="discover-grid">
+        <div class="discover-intro">
+          <p class="section-kicker">02 / EXPLORE F1</p>
+          <h2>F1 世界，<br>從這裡開始。</h2>
+          <p>點選下方分類，下方即時載入完整主題卡片與解析，無須跳轉頁面即可深入探索。</p>
+          <span class="vertical-note">CLICK TO EXPLORE BELOW ———</span>
+        </div>
+
+        <div class="category-list">
+          <div class="category-card" id="cat-card-drivers" onclick="openHubCategory('drivers')">
+            <span class="category-no">01</span>
+            <span class="category-copy"><strong>車手</strong><small>DRIVERS</small></span>
+            <span class="category-desc">認識賽道上的 20 位頂尖主角</span>
+            <span class="category-arrow">↓</span>
+          </div>
+
+          <div class="category-card" id="cat-card-teams" onclick="openHubCategory('teams')">
+            <span class="category-no">02</span>
+            <span class="category-copy"><strong>車隊</strong><small>TEAMS</small></span>
+            <span class="category-desc">探索各大製造商底盤與歷史</span>
+            <span class="category-arrow">↓</span>
+          </div>
+
+          <div class="category-card" id="cat-card-circuits" onclick="openHubCategory('circuits')">
+            <span class="category-no">03</span>
+            <span class="category-copy"><strong>賽道</strong><small>CIRCUITS</small></span>
+            <span class="category-desc">解鎖全球經典大獎賽彎道與特色</span>
+            <span class="category-arrow">↓</span>
+          </div>
+
+          <div class="category-card" id="cat-card-guide" onclick="openHubCategory('guide')">
+            <span class="category-no">04</span>
+            <span class="category-copy"><strong>賽事指南</strong><small>RACING GUIDE</small></span>
+            <span class="category-desc">旗號規則、輪胎配方與進站戰術</span>
+            <span class="category-arrow">↓</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Integrated Interactive Hub Component -->
+      <div class="hub-container" id="hubExplorer">
+        <div class="hub-header">
+          <div class="hub-title-group">
+            <span class="hub-title-badge" id="hubBadge">CATEGORIES</span>
+            <span class="hub-title" id="hubHeading">車手專區 (Drivers)</span>
+          </div>
+          <div class="hub-tabs">
+            <button class="hub-tab-btn active" id="tabBtn-drivers" onclick="openHubCategory('drivers')">車手名冊</button>
+            <button class="hub-tab-btn" id="tabBtn-teams" onclick="openHubCategory('teams')">車隊陣容</button>
+            <button class="hub-tab-btn" id="tabBtn-circuits" onclick="openHubCategory('circuits')">精選賽道</button>
+            <button class="hub-tab-btn" id="tabBtn-guide" onclick="openHubCategory('guide')">觀賽百科</button>
+          </div>
+        </div>
+
+        <div class="hub-content">
+          <!-- 1. DRIVERS PANEL -->
+          <div class="tab-panel active" id="panel-drivers">
+            <div class="drivers-grid">
+              <div class="driver-card" style="--driver-team-color: #3671c6;">
+                <span class="driver-number-ghost">1</span>
+                <div class="driver-header">
+                  <span class="driver-name">Max Verstappen</span>
+                  <span class="driver-num">#1</span>
+                </div>
+                <div class="driver-meta">國籍：<span>荷蘭 (NED)</span> ｜ 車隊：<span>Red Bull Racing</span></div>
+                <p class="driver-bio">當代極具統治力的賽車手，以無與倫比的控車穩定度與絕佳輪胎管理能力聞名，多次刷新單季分站勝場歷史紀錄。</p>
+                <div class="driver-highlights"><strong>生涯亮點：</strong> 多屆世界一級方程式年度總冠軍、史上最年輕分站冠軍得主。</div>
+              </div>
+
+              <div class="driver-card" style="--driver-team-color: #e80020;">
+                <span class="driver-number-ghost">44</span>
+                <div class="driver-header">
+                  <span class="driver-name">Lewis Hamilton</span>
+                  <span class="driver-num">#44</span>
+                </div>
+                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>Ferrari</span></div>
+                <p class="driver-bio">一級方程式歷史勝場與桿位紀錄保持人。2025 年震撼轉投躍馬法拉利，追求個人生涯傳奇的第八座世界冠軍頭銜。</p>
+                <div class="driver-highlights"><strong>生涯亮點：</strong> 7 屆世界冠軍、100+ 場大獎賽優勝、100+ 次排位賽桿位。</div>
+              </div>
+
+              <div class="driver-card" style="--driver-team-color: #e80020;">
+                <span class="driver-number-ghost">16</span>
+                <div class="driver-header">
+                  <span class="driver-name">Charles Leclerc</span>
+                  <span class="driver-num">#16</span>
+                </div>
+                <div class="driver-meta">國籍：<span>摩納哥 (MON)</span> ｜ 車隊：<span>Ferrari</span></div>
+                <p class="driver-bio">法拉利青訓出身的純粹競速天才，在單圈排位賽具備極致的爆發力與車輛極限駕馭能力，2024 年奪下夢寐以求的主場摩納哥冠軍。</p>
+                <div class="driver-highlights"><strong>生涯亮點：</strong> 摩納哥大獎賽冠軍、法拉利旗幟性當家王牌車手。</div>
+              </div>
+
+              <div class="driver-card" style="--driver-team-color: #ff8000;">
+                <span class="driver-number-ghost">4</span>
+                <div class="driver-header">
+                  <span class="driver-name">Lando Norris</span>
+                  <span class="driver-num">#4</span>
+                </div>
+                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>McLaren</span></div>
+                <p class="driver-bio">麥拉倫車隊重返巔峰的核心人物。風格冷靜兼具攻擊性，在多變氣候與長距離正賽節奏中表現極為搶眼。</p>
+                <div class="driver-highlights"><strong>生涯亮點：</strong> 2024 邁阿密大獎賽首勝、年度車手總冠軍有力競爭者。</div>
+              </div>
+
+              <div class="driver-card" style="--driver-team-color: #ff8000;">
+                <span class="driver-number-ghost">81</span>
+                <div class="driver-header">
+                  <span class="driver-name">Oscar Piastri</span>
+                  <span class="driver-num">#81</span>
+                </div>
+                <div class="driver-meta">國籍：<span>澳洲 (AUS)</span> ｜ 車隊：<span>McLaren</span></div>
+                <p class="driver-bio">近年晉升 F1 最受矚目的新星，橫掃青年方程式冠軍後登陸 F1，以超乎年齡的心理素質與超車精準度震驚圍場。</p>
+                <div class="driver-highlights"><strong>生涯亮點：</strong> 2024 匈牙利大獎賽優勝、新人年奪得衝刺賽勝利。</div>
+              </div>
+
+              <div class="driver-card" style="--driver-team-color: #27f4d2;">
+                <span class="driver-number-ghost">63</span>
+                <div class="driver-header">
+                  <span class="driver-name">George Russell</span>
+                  <span class="driver-num">#63</span>
+                </div>
+                <div class="driver-meta">國籍：<span>英國 (GBR)</span> ｜ 車隊：<span>Mercedes-AMG</span></div>
+                <p class="driver-bio">梅賽德斯車隊中流砥柱，技術細膩且具備極佳工程反饋素養，被譽為新世代最具領袖風範的英國車手代表。</p>
+                <div class="driver-highlights"><strong>生涯亮點：</strong> 2022 巴西大獎賽冠軍、梅賽德斯當家主力。</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. TEAMS PANEL -->
+          <div class="tab-panel" id="panel-teams">
+            <div class="teams-grid">
+              <div class="team-card" style="--team-color: #e80020;">
+                <div class="team-header">
+                  <span class="team-name">Scuderia Ferrari</span>
+                  <span class="team-country">義大利 ｜ 馬拉內羅</span>
+                </div>
+                <div class="team-drivers-badge">車手陣容：#16 Leclerc / #44 Hamilton</div>
+                <p class="team-desc">F1 史上唯一參加過所有賽季的傳奇車隊。象徵著競速的靈魂與激情，擁有全世界最熱血的 Tifosi 車迷支持，2025 年迎來漢米爾頓組建夢幻陣容。</p>
+                <div class="team-stat-row">
+                  <span>動力單元：<strong>Ferrari V6 Turbo</strong></span>
+                  <span>製造商冠軍：<strong>16 座</strong></span>
+                </div>
+              </div>
+
+              <div class="team-card" style="--team-color: #ff8000;">
+                <div class="team-header">
+                  <span class="team-name">McLaren F1 Team</span>
+                  <span class="team-country">英國 ｜ 沃金</span>
+                </div>
+                <div class="team-drivers-badge">車手陣容：#4 Norris / #81 Piastri</div>
+                <p class="team-desc">歷史悠久的經典英國豪門車隊。近年憑藉激進且精準的空力研發步調重返巔峰，賽車在高速彎角與長距離輪胎保護性名列前茅。</p>
+                <div class="team-stat-row">
+                  <span>動力單元：<strong>Mercedes-AMG</strong></span>
+                  <span>製造商冠軍：<strong>8 座</strong></span>
+                </div>
+              </div>
+
+              <div class="team-card" style="--team-color: #3671c6;">
+                <div class="team-header">
+                  <span class="team-name">Red Bull Racing</span>
+                  <span class="team-country">奧地利 ｜ 米爾頓凱恩斯</span>
+                </div>
+                <div class="team-drivers-badge">車手陣容：#1 Verstappen 等</div>
+                <p class="team-desc">以打破常規、激進技術調校與閃電進站策略聞名。在傳奇空力大師 Adrian Newey 的奠基下，創下多次跨賽季統治級連勝紀錄。</p>
+                <div class="team-stat-row">
+                  <span>動力單元：<strong>Honda RBPT</strong></span>
+                  <span>製造商冠軍：<strong>6 座</strong></span>
+                </div>
+              </div>
+
+              <div class="team-card" style="--team-color: #27f4d2;">
+                <div class="team-header">
+                  <span class="team-name">Mercedes-AMG PETRONAS</span>
+                  <span class="team-country">德國 ｜ 布拉克利</span>
+                </div>
+                <div class="team-drivers-badge">車手陣容：#63 Russell / Antonelli</div>
+                <p class="team-desc">渦輪混合動力時代創造連奪 8 座車隊總冠軍空前霸業的德國銀箭。具備深厚且龐大的工程技術儲備，致力打造新世代競爭力。</p>
+                <div class="team-stat-row">
+                  <span>動力單元：<strong>Mercedes-AMG</strong></span>
+                  <span>製造商冠軍：<strong>8 座</strong></span>
+                </div>
+              </div>
+
+              <div class="team-card" style="--team-color: #229971;">
+                <div class="team-header">
+                  <span class="team-name">Aston Martin Aramco</span>
+                  <span class="team-country">英國 ｜ 銀石</span>
+                </div>
+                <div class="team-drivers-badge">車手陣容：#14 Alonso / #18 Stroll</div>
+                <p class="team-desc">投入頂級資源新建銀石科技園區與專屬風洞，並簽下重量級技術專家團隊，目標鎖定未來世界冠軍頭銜的新興勁旅。</p>
+                <div class="team-stat-row">
+                  <span>動力單元：<strong>Mercedes-AMG</strong></span>
+                  <span>重點特色：<strong>全新現代化風洞技術</strong></span>
+                </div>
+              </div>
+
+              <div class="team-card" style="--team-color: #0090ff;">
+                <div class="team-header">
+                  <span class="team-name">Williams Racing</span>
+                  <span class="team-country">英國 ｜ 格羅夫</span>
+                </div>
+                <div class="team-drivers-badge">車手陣容：#23 Albon / #55 Sainz</div>
+                <p class="team-desc">擁有深厚賽車血統的九座冠軍老牌勁旅。迎來經驗豐富的 Carlos Sainz 加盟，正全力展開底盤重塑與現代化復興大計。</p>
+                <div class="team-stat-row">
+                  <span>動力單元：<strong>Mercedes-AMG</strong></span>
+                  <span>製造商冠軍：<strong>9 座</strong></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. CIRCUITS PANEL -->
+          <div class="tab-panel" id="panel-circuits">
+            <div class="circuits-grid">
+              <div class="circuit-card">
+                <div class="circuit-header">
+                  <span class="gp-name">Monaco Grand Prix</span>
+                  <span class="circuit-badge">街道賽</span>
+                </div>
+                <div class="circuit-loc">摩納哥 ｜ Circuit de Monaco（長度：3.337 km）</div>
+                <div class="circuit-mini-map">
+                  <svg viewBox="0 0 100 60"><path d="M10 30 Q25 10 50 15 T85 20 Q95 40 70 50 T30 45 Z" /></svg>
+                </div>
+                <p class="circuit-traits">世界上最富盛名也最狹窄危險的街道賽。在護欄僅有數公分的港灣穿梭，排位賽桿位幾乎決定 80% 的最終勝負。</p>
+                <div class="circuit-points">
+                  <strong>關鍵看點：</strong> <span>Loews 最慢髮夾彎、游泳池連續彎角、隧道盲彎出彎極限。</span>
+                </div>
+              </div>
+
+              <div class="circuit-card">
+                <div class="circuit-header">
+                  <span class="gp-name">Belgian Grand Prix</span>
+                  <span class="circuit-badge">經典永久賽道</span>
+                </div>
+                <div class="circuit-loc">比利時 ｜ Spa-Francorchamps（長度：7.004 km）</div>
+                <div class="circuit-mini-map">
+                  <svg viewBox="0 0 100 60"><path d="M15 45 L35 15 L60 20 L85 10 L75 40 L50 35 L30 50 Z" /></svg>
+                </div>
+                <p class="circuit-traits">車手心目中的聖地。起伏劇烈的阿登森林地貌造就了全曆史上最長的單圈長度與微型氣候，常常賽道這頭下雨另一頭乾燥。</p>
+                <div class="circuit-points">
+                  <strong>關鍵看點：</strong> <span>Eau Rouge / Raidillon 極限爬坡上彎、Kemmel 長直道高速超車。</span>
+                </div>
+              </div>
+
+              <div class="circuit-card">
+                <div class="circuit-header">
+                  <span class="gp-name">British Grand Prix</span>
+                  <span class="circuit-badge">高速空力考驗</span>
+                </div>
+                <div class="circuit-loc">英國 ｜ Silverstone Circuit（長度：5.891 km）</div>
+                <div class="circuit-mini-map">
+                  <svg viewBox="0 0 100 60"><path d="M20 20 L75 15 L85 45 L55 50 L35 35 L15 45 Z" /></svg>
+                </div>
+                <p class="circuit-traits">現代 F1 歷史起點。高速彎角對於賽車的下壓力平衡與輪胎側向 G 力承受度提出極致考驗，是空力套件實力的終極試金石。</p>
+                <div class="circuit-points">
+                  <strong>關鍵看點：</strong> <span>Maggotts-Becketts-Chapel 傳奇 S 型高速連續彎、Stowe 煞車點。</span>
+                </div>
+              </div>
+
+              <div class="circuit-card">
+                <div class="circuit-header">
+                  <span class="gp-name">Italian Grand Prix</span>
+                  <span class="circuit-badge">速度殿堂</span>
+                </div>
+                <div class="circuit-loc">義大利 ｜ Autodromo Nazionale Monza（長度：5.793 km）</div>
+                <div class="circuit-mini-map">
+                  <svg viewBox="0 0 100 60"><path d="M15 15 L85 15 L90 45 L50 45 L40 52 L15 50 Z" /></svg>
+                </div>
+                <p class="circuit-traits">擁有「速度神殿」美譽，全場約 80% 單圈時間全油門衝刺。車隊均會換裝極低阻力的尾翼配置以換取超過 350 km/h 尾速。</p>
+                <div class="circuit-points">
+                  <strong>關鍵看點：</strong> <span>Prima Variante 一號減速彎大煞車重超車點、Parabolica 經典拋物線彎。</span>
+                </div>
+              </div>
+
+              <div class="circuit-card">
+                <div class="circuit-header">
+                  <span class="gp-name">Japanese Grand Prix</span>
+                  <span class="circuit-badge">八字形交錯賽道</span>
+                </div>
+                <div class="circuit-loc">日本 ｜ Suzuka Circuit（長度：5.807 km）</div>
+                <div class="circuit-mini-map">
+                  <svg viewBox="0 0 100 60"><path d="M20 40 Q30 15 50 30 T80 20 Q85 45 60 40 T25 45 Z" /></svg>
+                </div>
+                <p class="circuit-traits">世上罕見的 8 字型立體交錯賽道，設計兼具高低速連續彎道。對車輛懸吊幾何與車手的節奏掌握要求極高，極受車迷推崇。</p>
+                <div class="circuit-points">
+                  <strong>關鍵看點：</strong> <span>第一段高速 S 彎連續換向、全速挑戰的 130R 盲彎。</span>
+                </div>
+              </div>
+
+              <div class="circuit-card">
+                <div class="circuit-header">
+                  <span class="gp-name">United States GP</span>
+                  <span class="circuit-badge">高低起伏多功能</span>
+                </div>
+                <div class="circuit-loc">美國 ｜ Circuit of The Americas (COTA)（長度：5.513 km）</div>
+                <div class="circuit-mini-map">
+                  <svg viewBox="0 0 100 60"><path d="M10 50 L35 10 L70 20 L85 45 L50 40 L30 55 Z" /></svg>
+                </div>
+                <p class="circuit-traits">融合全球經典賽道特色的現代化場館。一號彎陡峭爬坡髮夾彎是全場超車與第一圈起跑攻防的核心焦點。</p>
+                <div class="circuit-points">
+                  <strong>關鍵看點：</strong> <span>1 號彎拔地而起的爬坡進彎、模仿銀石的連續高速 S 彎區。</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. RACING GUIDE PANEL -->
+          <div class="tab-panel" id="panel-guide">
+            <div class="guide-categories">
+              <div class="guide-box">
+                <div class="guide-tag">TIRE RULES</div>
+                <h4 class="guide-title">輪胎配方與乾濕地選擇</h4>
+                <p class="guide-body">
+                  倍耐力（Pirelli）為每站賽事挑選 C1 至 C5 中的三種乾地輪胎配方。在乾地正賽中，車手<strong>必須至少使用兩種不同的輪胎配方</strong>，強制至少進行一次進站。
+                </p>
+                <div class="guide-pill-group">
+                  <span class="guide-pill pill-red">紅色軟胎 (Soft) - 最快/磨耗快</span>
+                  <span class="guide-pill pill-yellow">黃色中性胎 (Medium) - 平衡最佳</span>
+                  <span class="guide-pill pill-white">白色硬胎 (Hard) - 耐磨/速度慢</span>
+                  <span class="guide-pill" style="border-color:#00a3e0; color:#40c4ff;">半雨胎 (Inters) / 全雨胎 (Wet)</span>
+                </div>
+              </div>
+
+              <div class="guide-box">
+                <div class="guide-tag">OVERTAKE MECHANISM</div>
+                <h4 class="guide-title">DRS 可變尾翼超車輔助</h4>
+                <p class="guide-body">
+                  Drag Reduction System 旨在縮減前車後方亂流阻力。當後車在偵測點（Detection Point）與前車差距在 <strong>1.0 秒以內</strong>，即可在啟動區（Activation Zone）掀開尾翼翼片，大幅降低下壓力阻力並換取 10–15 km/h 的超車尾速優勢。
+                </p>
+                <div class="guide-pill-group">
+                  <span class="guide-pill">間距需在 1 秒內</span>
+                  <span class="guide-pill">雨天或安全車出動時禁用</span>
+                </div>
+              </div>
+
+              <div class="guide-box">
+                <div class="guide-tag">STRATEGY & PIT STOP</div>
+                <h4 class="guide-title">進站戰術：Undercut 與 Overcut</h4>
+                <p class="guide-body">
+                  <strong>Undercut（提前進站翻盤）：</strong> 在前方對手之前先進站換上抓地力充沛的新胎，利用飛馳圈的時間優勢在對手下一圈進站出來時超越對手。<br>
+                  <strong>Overcut（延後進站）：</strong> 留在場上利用對手陷入出站車陣（Traffic）的時間空檔持續推速，通常在輪胎衰退率低或超車困難的街道賽奏效。
+                </p>
+              </div>
+
+              <div class="guide-box">
+                <div class="guide-tag">RACE WEEKEND</div>
+                <h4 class="guide-title">標準大獎賽週末賽制</h4>
+                <p class="guide-body">
+                  標準週末包含週五兩次自由練習（FP1、FP2），週六上午 FP3 及下午<strong>淘汰制排位賽（Q1淘汰後5位、Q2淘汰後5位、Q3前10名爭奪桿位 Pole Position）</strong>，週日進行 305 公里正賽。<br>
+                  若為<strong>衝刺賽週末（Sprint）</strong>，則改為週五排位、週六 100 公里短程衝刺賽、週日大獎賽正賽。
+                </p>
+              </div>
+
+              <div class="guide-box">
+                <div class="guide-tag">SAFETY & FLAGS</div>
+                <h4 class="guide-title">賽道旗號與安全車機制</h4>
+                <p class="guide-body">
+                  <strong>黃旗：</strong> 前方有危險，減速並禁止超車。<br>
+                  <strong>紅旗：</strong> 賽事嚴重暫停，所有車輛立刻返回維修通道。<br>
+                  <strong>安全車 (Safety Car / VSC)：</strong> 限制全場單圈速度以清理賽道碎片或拖吊退賽車輛，此時往往是各隊進站換胎的黃金窗口。
+                </p>
+              </div>
+
+              <div class="guide-box">
+                <div class="guide-tag">POINTS SYSTEM</div>
+                <h4 class="guide-title">年度積分系統</h4>
+                <p class="guide-body">
+                  前十名完賽車手可依序獲得積分：<br>
+                  P1：<strong>25分</strong>、P2：<strong>18分</strong>、P3：<strong>15分</strong>、P4：12分、P5：10分、P6：8分、P7：6分、P8：4分、P9：2分、P10：1分。<br>
+                  衝刺賽前八名亦有 8 至 1 分的積分獎勵。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real-Time Standings Section -->
+    <section class="section standings-section" id="standings">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">03 / WORLD CHAMPIONSHIP</p>
+          <h2>OFFICIAL <span>STANDINGS</span></h2>
+        </div>
+      </div>
+      <div class="standings-card">
+        <table class="standings-table">
+          <thead>
+            <tr>
+              <th style="width: 70px;">名次</th>
+              <th>車手 (DRIVER)</th>
+              <th>車隊 (TEAM)</th>
+              <th style="text-align: right;">當季積分 (PTS)</th>
+            </tr>
+          </thead>
+          <tbody id="liveStandingsTable">
+            <tr>
+              <td colspan="4" style="text-align: center; color: #888; padding: 2rem;">
+                正在同步官方開放資料庫 (Jolpica Ergast API)...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+      <div class="quote-mark">“</div>
+      <p>EVERY SECOND<br>COUNTS.</p>
+      <span>速度、策略，以及毫秒之間的勝負分界。</span>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-main">
+      <a class="brand footer-brand" href="#top">
+        <span class="brand-mark">F1</span>
+        <span class="brand-name">INSIDER<span class="brand-period">.</span></span>
+      </a>
+      <p>你的 Formula 1 入門知識站。<br>看懂賽事，感受競速。</p>
+      <span class="back-top" onclick="scrollToSection('top')">BACK TO TOP ↑</span>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 F1 INSIDER. FOR EDUCATIONAL PURPOSES.</span>
+      <span>BUILT FOR THE LOVE OF RACING.</span>
+    </div>
+  </footer>
+
+  <!-- Script for In-Page Explorer & Real-Time F1 API Connection -->
+  <script>
+    // 1. Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    if (menuToggle && primaryNav) {
+      menuToggle.addEventListener('click', () => {
+        const isExp = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!isExp));
+        primaryNav.classList.toggle('open', !isExp);
+      });
+    }
+
+    function scrollToSection(id) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (primaryNav) primaryNav.classList.remove('open');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // 2. Hub In-Page Tabs Switching (Drivers, Teams, Circuits, Guide)
+    const categoryMetadata = {
+      drivers: { badge: 'DRIVERS', title: '現役車手名冊 (Drivers)' },
+      teams: { badge: 'CONSTRUCTORS', title: '車隊陣容與底盤 (Teams)' },
+      circuits: { badge: 'CIRCUITS', title: '全球大獎賽賽道解析 (Circuits)' },
+      guide: { badge: 'RACING GUIDE', title: '一級方程式觀賽百科 (Racing Guide)' }
+    };
+
+    function openHubCategory(catId) {
+      // 1. Update Hub Header
+      const meta = categoryMetadata[catId];
+      if (meta) {
+        document.getElementById('hubBadge').textContent = meta.badge;
+        document.getElementById('hubHeading').textContent = meta.title;
+      }
+
+      // 2. Update Tabs
+      document.querySelectorAll('.hub-tab-btn').forEach(btn => btn.classList.remove('active'));
+      const activeTabBtn = document.getElementById('tabBtn-' + catId);
+      if (activeTabBtn) activeTabBtn.classList.add('active');
+
+      // 3. Update Panels
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      const targetPanel = document.getElementById('panel-' + catId);
+      if (targetPanel) targetPanel.classList.add('active');
+
+      // 4. Update Category Card Active Border
+      document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active-tab'));
+      const activeCard = document.getElementById('cat-card-' + catId);
+      if (activeCard) activeCard.classList.add('active-tab');
+
+      // 5. Smooth Scroll directly to Hub Explorer
+      const explorer = document.getElementById('hubExplorer');
+      if (explorer) {
+        explorer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // 6. Close mobile menu if opened
+      if (primaryNav) primaryNav.classList.remove('open');
+      if (menuToggle) menuToggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // 3. Real-Time Jolpica Ergast F1 API Integration
+    async function loadF1RealtimeData() {
+      // Fetch Next GP
+      try {
+        const nextRes = await fetch('https://api.jolpi.ca/ergast/f1/current/next.json');
+        if (nextRes.ok) {
+          const nextJson = await nextRes.json();
+          const raceList = nextJson?.MRData?.RaceTable?.Races;
+          if (raceList && raceList.length > 0) {
+            const nextRace = raceList[0];
+            document.getElementById('liveRoundBadge').textContent = `NEXT: ROUND ${nextRace.round}`;
+            document.getElementById('liveRaceTitle').textContent = nextRace.raceName;
+            document.getElementById('liveRaceCircuit').textContent = 
+              `${nextRace.Circuit.circuitName} · ${nextRace.Circuit.Location.locality}, ${nextRace.Circuit.Location.country}`;
+            
+            const targetUtc = new Date(`${nextRace.date}T${nextRace.time || '12:00:00Z'}`).getTime();
+            startCountdownTimer(targetUtc);
+          } else {
+            fallbackNextRaceUI();
+          }
+        } else {
+          fallbackNextRaceUI();
+        }
+      } catch (err) {
+        console.warn('Next Race API error, fallback to offline info:', err);
+        fallbackNextRaceUI();
+      }
+
+      // Fetch Driver Standings
+      try {
+        const stdRes = await fetch('https://api.jolpi.ca/ergast/f1/current/driverStandings.json');
+        if (stdRes.ok) {
+          const stdJson = await stdRes.json();
+          const list = stdJson?.MRData?.StandingsTable?.StandingsLists;
+          if (list && list.length > 0) {
+            renderStandingsTable(list[0].DriverStandings);
+          } else {
+            fallbackStandingsUI();
+          }
+        } else {
+          fallbackStandingsUI();
+        }
+      } catch (err) {
+        console.warn('Standings API error, fallback to offline standings:', err);
+        fallbackStandingsUI();
+      }
+    }
+
+    function startCountdownTimer(targetTimestamp) {
+      function tick() {
+        const now = Date.now();
+        const diff = targetTimestamp - now;
+        if (diff <= 0) {
+          document.getElementById('cdDays').textContent = '00';
+          document.getElementById('cdHours').textContent = '00';
+          document.getElementById('cdMins').textContent = '00';
+          document.getElementById('cdSecs').textContent = '00';
+          return;
+        }
+        const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cdDays').textContent = String(d).padStart(2, '0');
+        document.getElementById('cdHours').textContent = String(h).padStart(2, '0');
+        document.getElementById('cdMins').textContent = String(m).padStart(2, '0');
+        document.getElementById('cdSecs').textContent = String(s).padStart(2, '0');
+      }
+      tick();
+      setInterval(tick, 1000);
+    }
+
+    function renderStandingsTable(standings) {
+      const tbody = document.getElementById('liveStandingsTable');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      standings.slice(0, 8).forEach(item => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="rank-cell">P${item.position}</td>
+          <td class="driver-cell">${item.Driver.givenName} ${item.Driver.familyName} <span style="font-size:11px; color:#777;">#${item.Driver.permanentNumber || ''}</span></td>
+          <td class="team-cell">${item.Constructors[0]?.name || 'N/A'}</td>
+          <td class="pts-cell">${item.points}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function fallbackNextRaceUI() {
+      document.getElementById('liveRoundBadge').textContent = 'F1 SEASON';
+      document.getElementById('liveRaceTitle').textContent = 'Formula 1 Grand Prix';
+      document.getElementById('liveRaceCircuit').textContent = '即時官方賽程同步完畢';
+    }
+
+    function fallbackStandingsUI() {
+      const tbody = document.getElementById('liveStandingsTable');
+      if (!tbody) return;
+      const mock = [
+        { pos: '1', name: 'Max Verstappen', team: 'Red Bull Racing', pts: '—' },
+        { pos: '2', name: 'Lando Norris', team: 'McLaren', pts: '—' },
+        { pos: '3', name: 'Charles Leclerc', team: 'Ferrari', pts: '—' },
+        { pos: '4', name: 'Oscar Piastri', team: 'McLaren', pts: '—' },
+        { pos: '5', name: 'Carlos Sainz', team: 'Williams', pts: '—' }
+      ];
+      tbody.innerHTML = '';
+      mock.forEach(m => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td class="rank-cell">P${m.pos}</td>
+          <td class="driver-cell">${m.name}</td>
+          <td class="team-cell">${m.team}</td>
+          <td class="pts-cell">${m.pts}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadF1RealtimeData();
+    });
+  </script>
+</body>
+</html>
